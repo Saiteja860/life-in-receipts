@@ -1,125 +1,149 @@
-import { useMemo } from 'react'
-import { buildInsights } from '../lib/insights.js'
+import { LIMITS, MONTHS } from '@/constants';
+import { useArchive } from '@/context';
+import { pluralize } from '@/utils/format.js';
+import { BarMeter, CuriosityLog, HourHeatStrip, MonthBars, MoodArc, StatCard } from './insights/index.js';
 
-function BarRow({ label, value, max, color, suffix }) {
-  return (
-    <div className="chart-row">
-      <span className="chart-label">{label}</span>
-      <div className="chart-track">
-        <div className="chart-fill" style={{ width: `${(value / max) * 100}%`, background: color }} />
-      </div>
-      <span className="chart-val">{suffix}</span>
-    </div>
-  )
-}
+const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-export default function Insights({ receipts, chapterMap }) {
-  const s = useMemo(() => buildInsights(receipts, chapterMap), [receipts, chapterMap])
-  const maxSpend = Math.max(...s.spendByMonth, 1)
-  const maxCount = Math.max(...s.countByMonth, 1)
-  const maxHour = Math.max(...s.hourBins, 1)
-  const lateNightPct = s.musicTotal ? Math.round((s.lateNightMusic / s.musicTotal) * 100) : 0
-  const moodPts = s.moodByMonth
-    .map((v, i) => (v == null ? null : `${(i / 11) * 300 + 10},${60 - ((v - 1) / 4) * 46}`))
-    .filter(Boolean)
-    .join(' ')
+/**
+ * Patterns — the "so what?" view.
+ *
+ * Every number here is computed from the raw receipts by `@/lib/insights`, i.e.
+ * deleting this file loses no data, only a reading of it. Charts are described in
+ * `./insights/*` where their accessibility alternatives live.
+ */
+export default function Insights() {
+  const { insights: stats, connection } = useArchive();
+
+  const lateNightPct = stats.musicTotal ? Math.round((stats.lateNightMusic / stats.musicTotal) * 100) : 0;
+  const photoShare = stats.total ? Math.round((stats.totalPhotos / stats.total) * 100) : 0;
+  const maxArtist = Math.max(...stats.topArtists.map(([, count]) => count), 1);
 
   return (
     <div className="insights">
       <header className="view-head">
-        <h2>Patterns — what the receipts confess</h2>
-        <p>Computed live from the raw records. This is where the data stops being data.</p>
+        <h1 className="view-title">Patterns — what the receipts confess</h1>
+        <p>
+          Computed live from the raw records, in the browser. This is where the data stops being data: rhythm,
+          money, mood and the places that repeat.
+        </p>
       </header>
 
       <div className="ins-grid">
-        <div className="ins-card">
-          <h3>The 2 AM Index</h3>
-          <p className="ins-big">{lateNightPct}%</p>
-          <p className="ins-note">
-            of all {s.musicTotal} logged plays happened between midnight and 4 AM.
-            The archive suspects at least one heavy season ({s.lateNightMusic} late-night plays).
-          </p>
-        </div>
-        <div className="ins-card">
-          <h3>The Ledger</h3>
-          <p className="ins-big">₹{s.totalSpend.toLocaleString('en-IN')}</p>
-          <p className="ins-note">
-            traced across purchases — from an ice cream tub that cost ₹285 to a guitar that cost ₹6,499 and fixed a whole season.
-          </p>
-        </div>
-        <div className="ins-card">
-          <h3>The Regulars</h3>
-          {s.topPlaces.map(([p, c]) => (
-            <BarRow key={p} label={p} value={c} max={s.topPlaces[0][1]} color="#2f7d5a" suffix={`${c}×`} />
+        <StatCard
+          title="The 2 AM Index"
+          value={`${lateNightPct}%`}
+          note={`of all ${stats.musicTotal} logged plays happened between midnight and 4 AM — ${pluralize(
+            stats.lateNightMusic,
+            'late-night play'
+          )}. The archive suspects one heavy season.`}
+        />
+        <StatCard
+          title="The Ledger"
+          value={`₹${stats.totalSpend.toLocaleString('en-IN')}`}
+          note={`Traced across purchases. Busiest month: ${
+            stats.busiestMonth
+              ? `${MONTHS[stats.busiestMonth.month]} (${stats.busiestMonth.count} receipts)`
+              : '—'
+          }; quietest: ${
+            stats.quietestMonth ? `${MONTHS[stats.quietestMonth.month]} (${stats.quietestMonth.count})` : '—'
+          }.`}
+        />
+        <StatCard
+          title="The Regulars"
+          value={`${stats.uniquePlaces} places`}
+          note="Where the year actually happened, by number of receipts."
+        >
+          {stats.topPlaces.map(([place, count]) => (
+            <BarMeter
+              key={place}
+              label={place}
+              value={count}
+              max={stats.topPlaces[0][1]}
+              color="#2f7d5a"
+              suffix={`${count}×`}
+            />
           ))}
-        </div>
-        <div className="ins-card">
-          <h3>The Soundtrack</h3>
-          {s.topArtists.map(([a, c]) => (
-            <BarRow key={a} label={a} value={c} max={Math.max(...s.topArtists.map((x) => x[1]))} color="#4a3b8f" suffix={`${c}×`} />
+        </StatCard>
+        <StatCard
+          title="The Soundtrack"
+          value={`${stats.uniqueArtists} artists`}
+          note="Top artists, then the people who heard the most from them."
+        >
+          {stats.topArtists.map(([artist, count]) => (
+            <BarMeter
+              key={artist}
+              label={artist}
+              value={count}
+              max={maxArtist}
+              color="#4a3b8f"
+              suffix={`${count}×`}
+            />
           ))}
-          {s.topContacts.length > 0 && (
-            <p className="ins-note">Most messaged: {s.topContacts.map(([c, n]) => `${c} (${n})`).join(' · ')}</p>
+          {stats.topContacts.length > 0 && (
+            <p className="ins-note">
+              Most messaged: {stats.topContacts.map(([name, count]) => `${name} (${count})`).join(' · ')} ·{' '}
+              {pluralize(stats.uniqueContacts, 'distinct contact')}.
+            </p>
           )}
-        </div>
+        </StatCard>
       </div>
 
       <div className="ins-row2">
-        <div className="ins-card ins-wide">
-          <h3>Spending by month</h3>
-          <div className="chart-bars">
-            {s.spendByMonth.map((v, i) => (
-              <div className="bar-col" key={i} title={`${s.months[i]}: ₹${v.toLocaleString('en-IN')}`}>
-                <div className="bar" style={{ height: `${Math.max((v / maxSpend) * 100, 2)}%` }} />
-                <span>{s.months[i]}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="ins-card ins-wide">
-          <h3>Mood arc of the year</h3>
-          <svg viewBox="0 0 320 70" className="mood-svg" preserveAspectRatio="none">
-            <polyline points={moodPts} fill="none" stroke="#c9754b" strokeWidth="2.5" strokeLinejoin="round" />
-            {moodPts.split(' ').map((pt, i) => {
-              const [x, y] = pt.split(',')
-              return <circle key={i} cx={x} cy={y} r="2.6" fill="#c9754b" />
-            })}
-          </svg>
-          <div className="mood-labels">{s.months.map((m) => <span key={m}>{m}</span>)}</div>
-        </div>
+        <section className="ins-card ins-wide" aria-labelledby="ins-spend">
+          <h3 id="ins-spend">Spending by month</h3>
+          <MonthBars
+            values={stats.spendByMonth}
+            months={stats.months}
+            caption={`Spending by month, total ₹${stats.totalSpend.toLocaleString('en-IN')}.`}
+          />
+        </section>
+        <section className="ins-card ins-wide" aria-labelledby="ins-mood">
+          <h3 id="ins-mood">Mood arc of the year</h3>
+          <MoodArc moods={stats.moodByMonth} months={stats.months} average={stats.averageMood} />
+          {stats.moodPeak != null && (
+            <p className="ins-note">
+              Average mood {stats.averageMood}/5 — lowest {stats.moodLow}, highest {stats.moodPeak}.
+            </p>
+          )}
+        </section>
       </div>
 
       <div className="ins-row2">
-        <div className="ins-card ins-wide">
-          <h3>When the year happened (hour of day)</h3>
-          <div className="heat-strip">
-            {s.hourBins.map((v, i) => (
-              <div
-                key={i}
-                className="heat-cell"
-                title={`${String(i).padStart(2, '0')}:00 — ${v} receipts`}
-                style={{ opacity: 0.15 + (v / maxHour) * 0.85 }}
-              />
-            ))}
-          </div>
-          <div className="mood-labels"><span>00h</span><span>06h</span><span>12h</span><span>18h</span><span>23h</span></div>
-        </div>
-        <div className="ins-card">
-          <h3>Curiosity log</h3>
-          <p className="ins-note">Actual searches, in order of the year:</p>
-          <ul className="search-list">
-            {s.searches.slice(0, 9).map((q, i) => <li key={i}>{q}</li>)}
-          </ul>
-          <p className="ins-note">…{s.searches.length - 9} more in the Explorer.</p>
-        </div>
+        <section className="ins-card ins-wide" aria-labelledby="ins-hours">
+          <h3 id="ins-hours">When the year happened (hour of day)</h3>
+          <HourHeatStrip bins={stats.hourBins} label="Receipts by hour of day" />
+          <p className="ins-note">
+            Busiest weekday: {stats.busiestWeekday == null ? '—' : WEEKDAYS[stats.busiestWeekday]} ·{' '}
+            {pluralize(stats.totalPhotos, 'photo')} ({photoShare}% of the archive)
+          </p>
+        </section>
+        <section className="ins-card" aria-labelledby="ins-curiosity">
+          <h3 id="ins-curiosity">Curiosity log</h3>
+          <CuriosityLog searches={stats.searches} limit={LIMITS.INSIGHT_SEARCHES} />
+        </section>
       </div>
 
-      {s.busiest && (
-        <div className="ins-busiest">
-          <strong>Busiest day: {s.busiest.date}</strong> — {s.busiest.count} receipts in a single day.
-          A day fully lived. Find it in the Explorer.
-        </div>
+      {stats.busiest && (
+        <p className="ins-busiest">
+          <strong>Busiest day: {stats.busiest.date}</strong> — {pluralize(stats.busiest.count, 'receipt')} in
+          a single day. A day fully lived. Find it in the Explorer.
+        </p>
       )}
+
+      {stats.streak.days > 1 && (
+        <p className="ins-busiest">
+          <strong>Longest streak: {pluralize(stats.streak.days, 'consecutive day')}</strong> (
+          {stats.streak.start} → {stats.streak.end}) — the habit the receipts never mention out loud.
+        </p>
+      )}
+
+      <p className="ins-note ins-engine-note">
+        Relationship engine: {connection.connected}/{connection.total} receipts connected (
+        {connection.coverage}%),
+        {` ${connection.averageLinks} links each on average`} · signals used:{' '}
+        {connection.reasons.map(([reason, count]) => `${reason} (${count})`).join(', ')}.
+      </p>
     </div>
-  )
+  );
 }

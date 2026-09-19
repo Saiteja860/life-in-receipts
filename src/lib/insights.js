@@ -1,97 +1,137 @@
 // The insight engine: computes the "so what?" layer from the raw receipts.
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+// Pure functions over plain data — no React, no DOM — so every number shown in
+// the Patterns view is unit-testable and reproducible.
+import { LIMITS, MONTHS, RECEIPT_TYPES } from '@/constants';
 
-function hourOf(r) {
-  return Number(r.ts.slice(11, 13))
-}
-function monthOf(r) {
-  return Number(r.ts.slice(5, 7)) - 1
+/** Hour of day (0–23) from a timestamp, without allocating a Date. */
+const hourOf = (ts) => Number(ts.slice(11, 13));
+/** Month index (0–11) from a timestamp. */
+const monthOf = (ts) => Number(ts.slice(5, 7)) - 1;
+/** Weekday index (0 = Sunday) from a timestamp, resolved in UTC for determinism. */
+const weekdayOf = (ts) => new Date(`${ts.slice(0, 10)}T00:00:00Z`).getUTCDay();
+
+/**
+ * Tallies how many receipts share a field.
+ * @param {import('@/types').Receipt[]} receipts
+ * @param {(r: import('@/types').Receipt) => string|undefined} pick
+ * @returns {Map<string, number>}
+ */
+function tally(receipts, pick) {
+  const counts = new Map();
+  for (const r of receipts) {
+    const key = pick(r);
+    if (key) counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  return counts;
 }
 
+/**
+ * Top-N entries of a tally, sorted by count then name (deterministic output).
+ * @param {Map<string, number>} counts
+ * @param {number} limit
+ * @returns {[string, number][]}
+ */
+function topN(counts, limit) {
+  return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, limit);
+}
+
+/**
+ * Longest run of consecutive calendar days containing at least one receipt.
+ * This pattern exists only in aggregate — no single receipt shows it.
+ * @param {string[]} days sorted unique `YYYY-MM-DD` values
+ * @returns {{ start: string, end: string, days: number }}
+ */
+function longestStreak(days) {
+  let best = { start: '', end: '', days: 0 };
+  let runStart = null;
+  let previous = null;
+
+  for (const day of days) {
+    const time = Date.parse(`${day}T00:00:00Z`);
+    if (previous == null || time - previous !== 86_400_000) runStart = day;
+    const length = Math.round((time - Date.parse(`${runStart}T00:00:00Z`)) / 86_400_000) + 1;
+    if (length > best.days) best = { start: runStart, end: day, days: length };
+    previous = time;
+  }
+  return best;
+}
+
+/**
+ * Builds every derived statistic the UI needs, in a single pass over the dataset.
+ * @param {import('@/types').Receipt[]} receipts
+ * @param {import('@/types').ChapterMap} chapterMap
+ * @returns {import('@/types').Insights}
+ */
 export function buildInsights(receipts, chapterMap) {
-  const byType = {}
-  for (const r of receipts) byType[r.type] = (byType[r.type] || 0) + 1
+  const byType = Object.fromEntries(RECEIPT_TYPES.map((type) => [type, 0]));
+  const spendByMonth = Array(12).fill(0);
+  const countByMonth = Array(12).fill(0);
+  const hourBins = Array(24).fill(0);
+  const weekdayBins = Array(7).fill(0);
+  const moodAcc = Array.from({ length: 12 }, () => []);
 
-  const spendByMonth = Array(12).fill(0)
-  const countByMonth = Array(12).fill(0)
-  let totalSpend = 0
+  let totalSpend = 0;
+  let lateNightMusic = 0;
+  let musicTotal = 0;
+
   for (const r of receipts) {
-    const m = monthOf(r)
-    countByMonth[m]++
-    const p = r.meta.price
-    if (typeof p === 'number') {
-      spendByMonth[m] += p
-      totalSpend += p
+    byType[r.type] = (byType[r.type] ?? 0) + 1;
+    countByMonth[monthOf(r.ts)] += 1;
+    hourBins[hourOf(r.ts)] += 1;
+    weekdayBins[weekdayOf(r.ts)] += 1;
+
+    const price = r.meta?.price;
+    if (typeof price === 'number') {
+      spendByMonth[monthOf(r.ts)] += price;
+      totalSpend += price;
     }
-  }
 
-  const hourBins = Array(24).fill(0)
-  let lateNightMusic = 0
-  let musicTotal = 0
-  for (const r of receipts) {
-    hourBins[hourOf(r)]++
     if (r.type === 'music') {
-      musicTotal++
-      if (hourOf(r) >= 0 && hourOf(r) < 4) lateNightMusic++
+      musicTotal += 1;
+      const hour = hourOf(r.ts);
+      if (hour >= 0 && hour < 4) lateNightMusic += 1;
     }
+
+    if (typeof r.meta?.mood === 'number') moodAcc[monthOf(r.ts)].push(r.meta.mood);
   }
 
-  const places = {}
+  // Mood arc: average of explicit moods per month, else inferred from the
+  // chapters that overlap that month, so the line never has holes.
+  const moodByMonth = moodAcc.map((values, month) => {
+    if (values.length) return values.reduce((a, b) => a + b, 0) / values.length;
+    const arcs = new Set(receipts.filter((r) => monthOf(r.ts) === month).map((r) => r.arc));
+    const chapterMoods = [...arcs].map((arc) => chapterMap[arc]?.mood).filter(Boolean);
+    return chapterMoods.length ? chapterMoods.reduce((a, b) => a + b, 0) / chapterMoods.length : null;
+  });
+
+  const knownMoods = moodByMonth.filter((value) => value != null);
+
+  // Busiest single day — "a day fully lived".
+  const byDay = new Map();
   for (const r of receipts) {
-    const p = r.meta.place
-    if (p) places[p] = (places[p] || 0) + 1
+    const day = r.ts.slice(0, 10);
+    byDay.set(day, (byDay.get(day) ?? 0) + 1);
   }
-  const topPlaces = Object.entries(places)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5)
-
-  const artists = {}
-  for (const r of receipts) {
-    if (r.type === 'music' && r.meta.artist && r.meta.artist !== 'self-curated') {
-      artists[r.meta.artist] = (artists[r.meta.artist] || 0) + 1
-    }
-  }
-  const topArtists = Object.entries(artists).sort((a, b) => b[1] - a[1]).slice(0, 4)
-
-  const contacts = {}
-  for (const r of receipts) {
-    if (r.type === 'message' && r.meta.contact) contacts[r.meta.contact] = (contacts[r.meta.contact] || 0) + 1
-  }
-  const topContacts = Object.entries(contacts).sort((a, b) => b[1] - a[1]).slice(0, 4)
-
-  // mood arc: average of note moods per month, falling back to chapter mood
-  const moodByMonth = Array(12).fill(null)
-  const moodAcc = Array.from({ length: 12 }, () => [])
-  for (const r of receipts) {
-    if (typeof r.meta.mood === 'number') moodAcc[monthOf(r)].push(r.meta.mood)
-  }
-  for (let m = 0; m < 12; m++) {
-    if (moodAcc[m].length) {
-      moodByMonth[m] = moodAcc[m].reduce((a, b) => a + b, 0) / moodAcc[m].length
-    } else {
-      // infer from chapters overlapping this month
-      const arcs = new Set(receipts.filter((r) => monthOf(r) === m).map((r) => r.arc))
-      const vals = [...arcs].map((a) => chapterMap[a]?.mood).filter(Boolean)
-      if (vals.length) moodByMonth[m] = vals.reduce((a, b) => a + b, 0) / vals.length
-    }
+  let busiest = null;
+  for (const [date, count] of byDay) {
+    if (!busiest || count > busiest.count) busiest = { date, count };
   }
 
-  // busiest single day ("a day fully lived")
-  const byDay = {}
-  for (const r of receipts) {
-    const d = r.ts.slice(0, 10)
-    byDay[d] = (byDay[d] || 0) + 1
-  }
-  let busiest = null
-  for (const [d, c] of Object.entries(byDay)) {
-    if (!busiest || c > busiest.count) busiest = { date: d, count: c }
-  }
+  const artists = tally(receipts, (r) =>
+    r.type === 'music' && r.meta?.artist && r.meta.artist !== 'self-curated'
+      ? String(r.meta.artist)
+      : undefined
+  );
+  const places = tally(receipts, (r) => (r.meta?.place ? String(r.meta.place) : undefined));
+  const contacts = tally(receipts, (r) =>
+    r.type === 'message' && r.meta?.contact ? String(r.meta.contact) : undefined
+  );
 
-  // searches as a word-ish cloud of curiosity
-  const searches = receipts.filter((r) => r.type === 'search').map((r) => r.title.replace(/"/g, ''))
+  const monthEntries = countByMonth
+    .map((count, month) => ({ month, count }))
+    .sort((a, b) => b.count - a.count);
 
-  const totalPhotos = byType.photo || 0
-  const totalEvents = byType.event || 0
+  const busiestWeekdayIndex = weekdayBins.indexOf(Math.max(...weekdayBins));
 
   return {
     total: receipts.length,
@@ -100,16 +140,29 @@ export function buildInsights(receipts, chapterMap) {
     countByMonth,
     totalSpend,
     hourBins,
+    weekdayBins,
     lateNightMusic,
     musicTotal,
-    topPlaces,
-    topArtists,
-    topContacts,
+    topPlaces: topN(places, LIMITS.INSIGHT_PLACES),
+    topArtists: topN(artists, LIMITS.INSIGHT_ARTISTS),
+    topContacts: topN(contacts, LIMITS.INSIGHT_CONTACTS),
+    uniquePlaces: places.size,
+    uniqueArtists: artists.size,
+    uniqueContacts: contacts.size,
     moodByMonth,
+    averageMood: knownMoods.length
+      ? Number((knownMoods.reduce((a, b) => a + b, 0) / knownMoods.length).toFixed(2))
+      : null,
+    moodPeak: knownMoods.length ? Math.max(...knownMoods) : null,
+    moodLow: knownMoods.length ? Math.min(...knownMoods) : null,
+    busiestMonth: monthEntries[0] ?? null,
+    quietestMonth: monthEntries[monthEntries.length - 1] ?? null,
+    busiestWeekday: busiestWeekdayIndex >= 0 ? busiestWeekdayIndex : null,
+    streak: longestStreak([...byDay.keys()].sort()),
+    searches: receipts.filter((r) => r.type === 'search').map((r) => String(r.title).replace(/"/g, '')),
+    totalPhotos: byType.photo ?? 0,
+    totalEvents: byType.event ?? 0,
     busiest,
-    searches,
-    totalPhotos,
-    totalEvents,
     months: MONTHS,
-  }
+  };
 }

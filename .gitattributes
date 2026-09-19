@@ -1,0 +1,6 @@
+# Normalise line endings so the Windows-authored source and the npm scripts agree.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.woff2 binary

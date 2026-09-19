@@ -1,0 +1,49 @@
+name: CI
+
+# Lint → test (with coverage) → build on every push and pull request.
+# A red check here is the same gate a reviewer runs locally with `npm run verify`.
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  verify:
+    name: Node ${{ matrix.node }} — lint, test, build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (zero warnings tolerated)
+        run: npm run lint
+
+      - name: Format check
+        run: npm run format:check
+
+      - name: Unit + component tests with coverage
+        run: npm run test:coverage
+
+      - name: Dataset integrity (headless)
+        run: npm run smoke
+
+      - name: Production build
+        run: npm run build
+
+      - name: Upload build output
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-node${{ matrix.node }}
+          path: dist
+          retention-days: 7

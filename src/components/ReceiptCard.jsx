@@ -1,57 +1,103 @@
-import { TYPE_META, CHAPTER_MAP } from '../data/chapters.js'
+import { memo } from 'react';
+import { CHAPTER_MAP, TYPE_META } from '@/data/chapters.js';
+import { CSS_VARS, TILT } from '@/constants';
+import { formatDate, formatTime } from '@/utils/format.js';
+import ReceiptRows from './ReceiptRows.jsx';
 
-const fmt = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
-
-// deterministic tilt from id so cards don't jitter on re-render
-function tilt(id) {
-  let h = 0
-  for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) | 0
-  return ((h % 7) - 3) * 0.35
+/**
+ * Deterministic "hand-printed" tilt for a receipt.
+ *
+ * A hash of the id (not `Math.random`) means every render — and every device —
+ * places a card at the same angle, so the grid looks intentional and no layout
+ * jitter is possible on re-render.
+ *
+ * @param {string} id
+ * @returns {number} degrees
+ */
+export function tiltOf(id) {
+  let hash = 0;
+  for (let i = 0; i < id.length; i += 1) {
+    hash = (hash * TILT.HASH_MULTIPLIER + id.charCodeAt(i)) | 0;
+  }
+  return ((hash % TILT.SPREAD) - TILT.HALF) * TILT.STEP;
 }
 
-function Barcode() {
-  return <div className="barcode" aria-hidden="true" />
+/** Decorative CSS barcode — always hidden from assistive tech. */
+function Barcode({ large = false }) {
+  return <div className={large ? 'barcode barcode-lg' : 'barcode'} aria-hidden="true" />;
 }
 
-export default function ReceiptCard({ receipt, onClick, dimmed, linked, focusMode, onMouseEnter }) {
-  const t = TYPE_META[receipt.type]
-  const date = new Date(receipt.ts)
-  const chapter = CHAPTER_MAP[receipt.arc]
-  const cls = ['receipt-card']
-  if (focusMode && dimmed) cls.push('is-dimmed')
-  if (focusMode && linked) cls.push('is-linked')
+/**
+ * A single receipt rendered as a thermal-printer artefact.
+ *
+ * Interaction contract:
+ *  • click / Enter  → open its thread modal
+ *  • hover          → focus the Connection Lens (pointer devices)
+ *  • focus          → focus the Connection Lens (keyboard users, same feature)
+ *
+ * Wrapped in `React.memo`: with 163 cards on screen, the lens re-renders the
+ * whole grid on every hover, and only the two affected cards ever change.
+ *
+ * @param {{
+ *   receipt: import('@/types').Receipt,
+ *   onOpen: (receipt: import('@/types').Receipt) => void,
+ *   lensActive?: boolean,
+ *   dimmed?: boolean,
+ *   linked?: boolean,
+ *   onHoverChange?: (id: string|null) => void,
+ * }} props
+ */
+export function ReceiptCard({
+  receipt,
+  onOpen,
+  lensActive = false,
+  dimmed = false,
+  linked = false,
+  onHoverChange,
+}) {
+  const type = TYPE_META[receipt.type];
+  const chapter = CHAPTER_MAP[receipt.arc];
+  const classes = ['receipt-card'];
+  if (lensActive && dimmed) classes.push('is-dimmed');
+  if (lensActive && linked) classes.push('is-linked');
+
+  const handleLens = (id) => {
+    if (lensActive && onHoverChange) onHoverChange(id);
+  };
 
   return (
     <button
-      className={cls.join(' ')}
-      style={{ '--tilt': `${tilt(receipt.id)}deg`, '--ink': t.ink, '--chapter': chapter.color }}
-      onClick={() => onClick(receipt)}
-      onMouseEnter={onMouseEnter}
+      type="button"
+      className={classes.join(' ')}
+      style={{
+        [CSS_VARS.TILT]: `${tiltOf(receipt.id)}deg`,
+        [CSS_VARS.INK]: type.ink,
+        [CSS_VARS.CHAPTER]: chapter.color,
+      }}
+      onClick={() => onOpen(receipt)}
+      onMouseEnter={() => handleLens(receipt.id)}
+      onMouseLeave={() => handleLens(null)}
+      onFocus={() => handleLens(receipt.id)}
+      onBlur={() => handleLens(null)}
     >
       <div className="rc-head">
-        <span className="rc-type">{t.icon} {t.label.toUpperCase()}</span>
+        <span className="rc-type">
+          {type.icon} {type.label.toUpperCase()}
+        </span>
         <span className="rc-id">#{receipt.id.slice(1)}</span>
       </div>
       <div className="rc-title">{receipt.title}</div>
       <div className="rc-divider" />
-      <div className="rc-rows">
-        {receipt.meta.item && <div className="rc-row"><span>ITEM</span><span className="rc-val">{receipt.meta.item}</span></div>}
-        {receipt.meta.artist && <div className="rc-row"><span>ARTIST</span><span className="rc-val">{receipt.meta.artist}</span></div>}
-        {receipt.meta.place && <div className="rc-row"><span>PLACE</span><span className="rc-val">{receipt.meta.place}</span></div>}
-        {receipt.meta.query && <div className="rc-row"><span>ENGINE</span><span className="rc-val">{receipt.meta.query}</span></div>}
-        {receipt.meta.contact && <div className="rc-row"><span>WITH</span><span className="rc-val">{receipt.meta.contact}</span></div>}
-        {receipt.meta.dwell && <div className="rc-row"><span>DWELL</span><span className="rc-val">{receipt.meta.dwell}</span></div>}
-        {receipt.meta.rating && <div className="rc-row"><span>RATED</span><span className="rc-val">{receipt.meta.rating}</span></div>}
-        {typeof receipt.meta.price === 'number' && (
-          <div className="rc-row rc-price"><span>TOTAL</span><span className="rc-val">₹{receipt.meta.price.toLocaleString('en-IN')}</span></div>
-        )}
-      </div>
+      <ReceiptRows receipt={receipt} />
       <div className="rc-divider" />
       <div className="rc-foot">
-        <span>{fmt.format(date)}</span>
-        <span>{receipt.ts.slice(11, 16)}</span>
+        <span>{formatDate(receipt.ts)}</span>
+        <span>{formatTime(receipt.ts)}</span>
       </div>
+      <span className="sr-only">— open this receipt's threads</span>
       <Barcode />
     </button>
-  )
+  );
 }
+
+export default memo(ReceiptCard);

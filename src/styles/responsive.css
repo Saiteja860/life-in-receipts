@@ -1,0 +1,349 @@
+/* =====================================================================
+   responsive.css — every adaptive rule in one auditable place.
+
+   Strategy: layouts are intrinsically fluid first (auto-fit + minmax + clamp),
+   then the media queries below only fix what intrinsic sizing cannot express —
+   column counts, nav behaviour, touch ergonomics and large-screen caps.
+   Verification widths: 320, 360, 480, 560, 720, 900, 1024, 1200, 1440, 1920.
+   ===================================================================== */
+
+/* ---------- 0. adaptive colour scheme ---------- */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #efe7d8;
+    --bg-soft: #f7f1e2;
+    --paper: #fffdf6;
+    --text: #241c14;
+    --muted: #6a5c4d;
+    --accent: #a9542b;
+  }
+  body {
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(169, 84, 43, 0.1), transparent 60%),
+      radial-gradient(900px 500px at 0% 110%, rgba(47, 125, 90, 0.08), transparent 60%), var(--bg);
+  }
+  .topnav {
+    background: rgba(247, 241, 226, 0.92);
+    border-bottom-color: rgba(36, 28, 20, 0.14);
+  }
+  .nav-btn.active {
+    background: var(--ink);
+    color: #fffdf6;
+  }
+  .nav-toggle {
+    color: var(--ink);
+  }
+  .chapter,
+  .ins-card,
+  .explorer-bar {
+    border-color: rgba(36, 28, 20, 0.14);
+  }
+  .ins-card,
+  .explorer-bar {
+    background: #fffaf0;
+  }
+  .ex-search {
+    background: #fff;
+    border-color: rgba(36, 28, 20, 0.22);
+  }
+  .chip {
+    border-color: rgba(36, 28, 20, 0.2);
+    background: rgba(36, 28, 20, 0.04);
+  }
+  .chart-track {
+    background: rgba(36, 28, 20, 0.1);
+  }
+  .mood-axis {
+    stroke: rgba(36, 28, 20, 0.15);
+  }
+  .ins-engine-note,
+  .app-footer {
+    border-color: rgba(36, 28, 20, 0.16);
+  }
+}
+
+/* ---------- 1. fluid layout primitives ---------- */
+main {
+  padding-inline: clamp(14px, 4vw, 28px);
+  padding-bottom: clamp(48px, 12vw, 90px);
+}
+.chapter-grid,
+.ex-grid,
+.modal-links-grid {
+  grid-template-columns: repeat(auto-fill, minmax(clamp(160px, 46vw, 230px), 1fr));
+}
+.ins-grid {
+  grid-template-columns: repeat(auto-fit, minmax(clamp(220px, 92vw, 250px), 1fr));
+}
+.chart-label {
+  width: 36%;
+}
+.ins-big {
+  font-size: clamp(28px, 7vw, 38px);
+}
+
+/* Container queries: a chapter adapts to *its own* width, so the same component
+   renders correctly in a narrow column and full width without extra classes. */
+.chapter {
+  container-type: inline-size;
+}
+@container (max-width: 420px) {
+  .chapter-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@container (min-width: 680px) {
+  .chapter-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+/* ---------- 2. touch ergonomics (no hover, coarse pointer) ---------- */
+@media (hover: none), (pointer: coarse) {
+  .nav-btn,
+  .chip,
+  .lens-toggle,
+  .chapter-more,
+  .nav-toggle,
+  .brand {
+    min-height: 44px; /* WCAG 2.2 target size */
+    display: inline-flex;
+    align-items: center;
+  }
+  .modal-close {
+    width: 44px;
+    height: 44px;
+  }
+  .receipt-card {
+    transform: none;
+  } /* tilt invites a tap miss */
+  .receipt-card:hover {
+    transform: none;
+  }
+  .heat-cell {
+    height: 42px;
+  }
+  .ex-slider input[type='range'] {
+    height: 34px;
+  }
+  .chapter-more {
+    padding-block: 12px;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .chapter-more:hover,
+  .nav-toggle:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* ---------- 3. breakpoint ladder ---------- */
+/* 320–359: smallest supported phones */
+@media (max-width: 359px) {
+  .cover-stats {
+    gap: 12px;
+  }
+  .cover-stats strong {
+    font-size: var(--step-1);
+  }
+  .chapter,
+  .ins-card {
+    padding: 12px;
+  }
+  .heat-strip {
+    gap: 2px;
+  }
+  .bar-col span {
+    font-size: 8.5px;
+  }
+  .ex-strip {
+    padding: 8px;
+  }
+}
+
+/* ≥360: comfortable base */
+@media (min-width: 360px) {
+  .cover-sub {
+    font-size: var(--step-1);
+  }
+}
+
+/* ≤560: navigation collapses behind the disclosure button */
+@media (max-width: 560px) {
+  .topnav {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  ul.nav-links[data-open='false'] {
+    display: none;
+  }
+  ul.nav-links[data-open='true'] {
+    flex-basis: 100%;
+  }
+  ul.nav-links {
+    gap: 4px;
+  }
+  .nav-btn {
+    padding: 10px 14px;
+  }
+  .view-title {
+    font-size: var(--step-2);
+  }
+  .chart-label {
+    width: 42%;
+  }
+}
+
+/* 561–720: nav is inline again on every route */
+@media (min-width: 561px) {
+  ul.nav-links[data-open] {
+    display: flex;
+  }
+}
+
+@media (max-width: 720px) {
+  .topnav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .ins-grid,
+  .ins-row2 {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .modal-backdrop {
+    padding: 16px 10px;
+  }
+  .modal-panel {
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+  }
+}
+
+/* 721–959: two-column patterns row */
+@media (min-width: 721px) {
+  .ins-row2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ≥900: chapters breathe */
+@media (min-width: 900px) {
+  .chapter {
+    padding: 22px 24px 18px;
+  }
+  .chapter-blurb {
+    font-size: var(--step-1);
+  }
+}
+
+/* ≥1200: large laptops */
+@media (min-width: 1200px) {
+  main {
+    max-width: 1240px;
+  }
+  .ins-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ≥1600: cap line length instead of stretching the receipt grid */
+@media (min-width: 1600px) {
+  main {
+    max-width: 1320px;
+  }
+  .cover-inner {
+    max-width: 720px;
+  }
+}
+
+/* ---------- 4. unusual viewports ---------- */
+/* Short landscape (phone rotated): the cover must not clip its CTA. */
+@media (orientation: landscape) and (max-height: 560px) {
+  .cover {
+    min-height: auto;
+    padding-block: 24px;
+  }
+  .cover-scan {
+    min-height: 0;
+    margin-bottom: 16px;
+  }
+  .cover-stats {
+    margin-top: 18px;
+  }
+  .topnav {
+    position: static;
+  }
+}
+
+/* Tablets in portrait: keep text columns readable */
+@media (min-width: 600px) and (max-width: 900px) {
+  .view-head p {
+    max-width: 62ch;
+  }
+}
+
+/* ---------- 5. user preferences ---------- */
+@media (prefers-contrast: more) {
+  :root {
+    --muted: #d8cec2;
+    --accent: #ff9a63;
+  }
+  .chapter,
+  .ins-card,
+  .explorer-bar,
+  .ex-strip {
+    border-color: rgba(246, 239, 221, 0.5);
+  }
+  .chip {
+    border-color: var(--text);
+  }
+  .rc-row > span:first-child {
+    opacity: 0.85;
+  }
+  .rc-foot {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-data: reduce) {
+  .cover-shred {
+    display: none;
+  }
+  .barcode {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-line {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Forced-colours (Windows High Contrast): rely on system colours, keep edges. */
+@media (forced-colors: active) {
+  .receipt-card,
+  .ins-card,
+  .chip,
+  .nav-btn {
+    border: 1px solid CanvasText;
+  }
+  .receipt-card {
+    background: Canvas;
+    color: CanvasText;
+  }
+}
+
+/* ---------- 6. high-DPI ---------- */
+@media (min-resolution: 2dppx) {
+  .chart-track {
+    height: 12px;
+  }
+  .rc-divider {
+    border-top-width: 1px;
+  }
+}

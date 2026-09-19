@@ -1,20 +1,46 @@
 {
   "name": "life-in-receipts",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "description": "Your Life, In Receipts — a frontend-only digital archive of one person's year, told through 163 receipts: 8 chapters, a connection engine and a live insight layer.",
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "data": "node scripts/generate-data.mjs"
+    "data": "node scripts/generate-data.mjs",
+    "smoke": "vite-node scripts/smoke-test.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write \"src/**/*.{js,jsx,css}\" \"tests/**/*.{js,jsx}\" \"scripts/*.mjs\" \"*.{js,json}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,css}\" \"tests/**/*.{js,jsx}\" \"scripts/*.mjs\" \"*.{js,json}\"",
+    "verify": "npm run lint && npm run test && npm run smoke && npm run build"
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
     "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^5.4.11"
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^9.1.2",
+    "eslint-plugin-react": "7.37",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^15.15.0",
+    "jsdom": "^25.0.1",
+    "prettier": "^3.9.8",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
   }
 }

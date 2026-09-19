@@ -1,0 +1,127 @@
+/* =====================================================================
+   print.css — the archive is printable: judging packs, journals, archives.
+
+   Rules: flatten the theme to ink-on-white, drop anything interactive, keep
+   every receipt intact on one page, and start each chapter on a fresh block.
+   ===================================================================== */
+@media print {
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #ffffff;
+    --paper: #ffffff;
+    --text: #101010;
+    --ink: #101010;
+    --muted: #444444;
+    --accent: #7a3a17;
+  }
+
+  html,
+  body {
+    background: #fff;
+    color: var(--text);
+  }
+  body {
+    font-size: 11pt;
+  }
+
+  /* Interactive chrome and decoration have no meaning on paper. */
+  .topnav,
+  .skip-link,
+  .cover-shred,
+  .cover-cta,
+  .cover-scan,
+  .lens-toggle,
+  .chapter-more,
+  .ex-more,
+  .ex-sentinel,
+  .ex-strip,
+  .modal-backdrop,
+  .nav-toggle,
+  .sr-only {
+    display: none !important;
+  }
+
+  main {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+  .view-head p {
+    max-width: none;
+  }
+
+  .cover {
+    min-height: auto;
+    padding: 0;
+  }
+  .cover-title {
+    font-size: 34pt;
+  }
+  .cover-stats {
+    justify-content: flex-start;
+    gap: 20pt;
+  }
+
+  .chapter,
+  .ins-card,
+  .explorer-bar {
+    border-color: #bbb;
+    background: none;
+    box-shadow: none;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .chapter {
+    break-before: page;
+    page-break-before: always;
+  }
+  .chapter:first-of-type {
+    break-before: auto;
+    page-break-before: auto;
+  }
+
+  .chapter-grid,
+  .ex-grid,
+  .modal-links-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10pt;
+  }
+
+  .receipt-card {
+    transform: none !important;
+    box-shadow: none;
+    border: 1px solid #bbb;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .receipt-card::before {
+    background: #333;
+  }
+  .receipt-card.is-dimmed {
+    opacity: 1;
+    filter: none;
+  }
+  .barcode {
+    display: none;
+  }
+
+  .app-footer {
+    border-color: #bbb;
+  }
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 9pt;
+  }
+
+  @page {
+    margin: 14mm;
+  }
+}

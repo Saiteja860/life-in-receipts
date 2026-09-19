@@ -89,9 +89,9 @@ export const CHAPTERS = [
     blurb:
       'A side-lower berth home for Diwali. A rangoli that has never lost. K3G with no protests entertained. The year closes on a rooftop with the people who stayed — and one playlist made of all of it.',
   },
-]
+];
 
-export const CHAPTER_MAP = Object.fromEntries(CHAPTERS.map((c) => [c.id, c]))
+export const CHAPTER_MAP = Object.fromEntries(CHAPTERS.map((c) => [c.id, c]));
 
 export const TYPE_META = {
   music: { label: 'Music', icon: '🎵', ink: '#4a3b8f' },
@@ -103,4 +103,4 @@ export const TYPE_META = {
   search: { label: 'Search', icon: '🔎', ink: '#555555' },
   event: { label: 'Event', icon: '⭐', ink: '#b0891f' },
   note: { label: 'Note', icon: '📝', ink: '#4f4f6b' },
-}
+};

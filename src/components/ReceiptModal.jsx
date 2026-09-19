@@ -1,80 +1,120 @@
-import { useEffect, useRef } from 'react'
-import { TYPE_META, CHAPTER_MAP } from '../data/chapters.js'
-import ReceiptCard from './ReceiptCard.jsx'
+import { useEffect, useRef } from 'react';
+import { CHAPTER_MAP, TYPE_META } from '@/data/chapters.js';
+import { useEscapeKey, useFocusTrap } from '@/hooks';
+import { formatLongDate, formatTime } from '@/utils/format.js';
+import { lockScroll } from '@/utils/dom.js';
+import ReceiptCard from './ReceiptCard.jsx';
+import ReceiptRows from './ReceiptRows.jsx';
 
-const fmt = new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' })
-
+/**
+ * Thread modal: one receipt, printed large, plus every receipt it connects to.
+ *
+ * Accessibility contract (all four points are enforced by the hooks, not by
+ * convention): `role="dialog"` + `aria-modal`, focus moves in on open, Tab is
+ * trapped inside, Escape closes, and focus returns to the card that opened it.
+ *
+ * @param {{
+ *   receipt: import('@/types').Receipt|null,
+ *   links: import('@/types').Link[],
+ *   onClose: () => void,
+ *   onOpen: (receipt: import('@/types').Receipt) => void,
+ * }} props
+ */
 export default function ReceiptModal({ receipt, links, onClose, onOpen }) {
-  const closeRef = useRef(null)
+  const panelRef = useRef(/** @type {HTMLDivElement|null} */ (null));
+  const closeRef = useRef(/** @type {HTMLButtonElement|null} */ (null));
+  const open = Boolean(receipt);
 
-  // Accessibility: Escape closes, focus moves to dialog, background scroll locks.
+  useFocusTrap(panelRef, open, closeRef);
+  useEscapeKey(onClose, open);
+
   useEffect(() => {
-    if (!receipt) return undefined
-    const onKey = (e) => { if (e.key === 'Escape') onClose() }
-    document.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    closeRef.current?.focus()
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
-  }, [receipt, onClose])
+    if (!open) return undefined;
+    return lockScroll();
+  }, [open]);
 
-  if (!receipt) return null
-  const t = TYPE_META[receipt.type]
-  const chapter = CHAPTER_MAP[receipt.arc]
-  const date = new Date(receipt.ts)
+  if (!receipt) return null;
 
-  const metaRows = Object.entries(receipt.meta).map(([k, v]) => (
-    <div className="rc-row" key={k}><span>{k.toUpperCase()}</span><span className="rc-val">{String(v)}</span></div>
-  ))
+  const type = TYPE_META[receipt.type];
+  const chapter = CHAPTER_MAP[receipt.arc];
 
   return (
-    <div className="modal-backdrop" onClick={onClose}>
+    <div className="modal-backdrop" onClick={onClose} role="presentation">
       <div
         className="modal-panel"
-        onClick={(e) => e.stopPropagation()}
+        ref={panelRef}
+        onClick={(event) => event.stopPropagation()}
         role="dialog"
         aria-modal="true"
-        aria-label={`Receipt: ${receipt.title}`}
+        aria-labelledby="receipt-modal-title"
+        aria-describedby="receipt-modal-hint"
         style={{ '--chapter': chapter.color }}
       >
-        <button className="modal-close" onClick={onClose} aria-label="Close receipt details" ref={closeRef}>✕</button>
-        <div className="modal-receipt" style={{ '--ink': t.ink }}>
+        <button
+          type="button"
+          className="modal-close"
+          onClick={onClose}
+          ref={closeRef}
+          aria-label={`Close details for ${receipt.title}`}
+        >
+          <span aria-hidden="true">✕</span>
+        </button>
+
+        <article className="modal-receipt" style={{ '--ink': type.ink }}>
           <div className="rc-head">
-            <span className="rc-type">{t.icon} {t.label.toUpperCase()}</span>
+            <span className="rc-type">
+              {type.icon} {type.label.toUpperCase()}
+            </span>
             <span className="rc-id">#{receipt.id.slice(1)}</span>
           </div>
-          <div className="rc-title rc-title-lg">{receipt.title}</div>
+          <h2 className="rc-title rc-title-lg" id="receipt-modal-title">
+            {receipt.title}
+          </h2>
           <div className="rc-divider" />
-          <div className="rc-rows">{metaRows}</div>
+          <ReceiptRows receipt={receipt} variant="full" />
           <div className="rc-divider" />
           <div className="rc-foot">
-            <span>{fmt.format(date)}</span>
-            <span>{receipt.ts.slice(11, 16)}</span>
+            <span>{formatLongDate(receipt.ts)}</span>
+            <span>{formatTime(receipt.ts)}</span>
           </div>
-          <div className="modal-chapterline" style={{ color: chapter.color }}>
+          <p className="modal-chapterline" style={{ color: chapter.color }}>
             CHAPTER {chapter.num} — {chapter.title.toUpperCase()} · {chapter.moodLabel.toUpperCase()}
-          </div>
+          </p>
+          {receipt.tags?.length > 0 && (
+            <ul className="modal-tags" aria-label="Theme tags">
+              {receipt.tags.map((tag) => (
+                <li key={tag} className="link-chip">
+                  {tag.replace(/-/g, ' ')}
+                </li>
+              ))}
+            </ul>
+          )}
           <div className="barcode barcode-lg" aria-hidden="true" />
-        </div>
+        </article>
 
-        <div className="modal-links">
+        <section className="modal-links" aria-label="Related receipts">
           <h3>Found in the same threads</h3>
-          <p className="modal-links-hint">These receipts share a day, a place, or a theme with this one.</p>
+          <p className="modal-links-hint" id="receipt-modal-hint">
+            These receipts share a day, a place, or a theme with this one. Select any of them to keep
+            following the thread.
+          </p>
           <div className="modal-links-grid">
             {links.length === 0 && <p className="rc-empty">A moment alone in the archive.</p>}
-            {links.map(({ receipt: r, reasons }) => (
-              <div className="link-item" key={r.id}>
-                <ReceiptCard receipt={r} onClick={() => onOpen(r)} />
+            {links.map(({ receipt: related, reasons }) => (
+              <div className="link-item" key={related.id}>
+                <ReceiptCard receipt={related} onOpen={onOpen} />
                 <div className="link-reasons">
-                  {reasons.slice(0, 2).map((x) => <span key={x} className="link-chip">{x}</span>)}
+                  {reasons.slice(0, 3).map((reason) => (
+                    <span key={reason} className="link-chip">
+                      {reason}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </section>
       </div>
     </div>
-  )
+  );
 }

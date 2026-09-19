@@ -1,0 +1,215 @@
+/* =====================================================================
+   components.css — markup added by the store/hook refactor
+   Loaded after styles.css, before responsive.css.
+   ===================================================================== */
+
+/* ---------------- top navigation ---------------- */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+ul.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(246, 239, 221, 0.06);
+  color: var(--text);
+  border: 1px solid rgba(246, 239, 221, 0.2);
+  border-radius: var(--radius-pill);
+  padding: 8px 14px;
+  font-size: var(--step--1);
+  font-weight: 700;
+}
+.nav-toggle:hover {
+  border-color: var(--text);
+}
+
+/* ---------------- view headings ---------------- */
+.view-title {
+  font-size: var(--step-3);
+  margin: 8px 0 6px;
+}
+.view-head {
+  margin-bottom: var(--space-3);
+}
+.field {
+  display: block;
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.field-hint {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: var(--step--1);
+  line-height: 1.5;
+}
+
+/* ---------------- explorer additions ---------------- */
+.chip-count {
+  margin-left: 6px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  opacity: 0.7;
+}
+.chip-reset {
+  border-style: dashed;
+}
+.ex-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0 6px;
+}
+.ex-sentinel {
+  width: 100%;
+  height: 1px;
+}
+
+/* ---------------- modal additions ---------------- */
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+.rc-empty {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* ---------------- Suspense skeleton ---------------- */
+.view-loading {
+  display: grid;
+  gap: 12px;
+  padding: 24px 0;
+}
+.skeleton-line {
+  height: 14px;
+  border-radius: 6px;
+  width: min(420px, 70%);
+  background: linear-gradient(
+    90deg,
+    rgba(246, 239, 221, 0.08),
+    rgba(246, 239, 221, 0.16),
+    rgba(246, 239, 221, 0.08)
+  );
+  background-size: 200% 100%;
+  animation: skeleton-sweep 1.4s linear infinite;
+}
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+}
+.skeleton-card {
+  height: 210px;
+  border-radius: 6px;
+  background: rgba(246, 239, 221, 0.06);
+}
+@keyframes skeleton-sweep {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ---------------- charts ---------------- */
+.ins-chart {
+  margin: 0;
+}
+.ins-chart figcaption {
+  margin: 0;
+}
+.mood-axis {
+  stroke: rgba(246, 239, 221, 0.12);
+  stroke-width: 1;
+}
+.ins-engine-note {
+  margin-top: var(--space-4);
+  border-top: 1px dashed rgba(246, 239, 221, 0.18);
+  padding-top: var(--space-3);
+}
+
+/* ---------------- footer ---------------- */
+.app-footer {
+  margin-top: var(--space-6);
+  border-top: 1px solid rgba(246, 239, 221, 0.12);
+  padding-top: var(--space-4);
+  color: var(--muted);
+}
+.footer-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.footer-grid h2 {
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+.footer-grid p {
+  margin: 0;
+  font-size: var(--step--1);
+  line-height: 1.7;
+}
+.footer-note {
+  margin: var(--space-4) 0 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+.footer-note code {
+  color: var(--text);
+}
+
+/* ---------------- error boundary ---------------- */
+.crash {
+  max-width: 620px;
+  margin: 12vh auto;
+  padding: 28px;
+  background: var(--bg-soft);
+  border: 1px solid rgba(201, 117, 75, 0.5);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.crash h1 {
+  font-size: var(--step-2);
+  margin: 0 0 10px;
+}
+.crash p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+.crash-detail {
+  text-align: left;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 12px;
+  border-radius: 8px;
+  color: var(--text);
+}
