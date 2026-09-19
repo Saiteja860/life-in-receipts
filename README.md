@@ -5,7 +5,7 @@
 [![CI](https://img.shields.io/badge/CI-lint%20%C2%B7%20test%20%C2%B7%20build-brightgreen)](#quality-gates)
 [![Tests](https://img.shields.io/badge/tests-99%20passing-brightgreen)](#quality-gates)
 [![Coverage](https://img.shields.io/badge/coverage-93%25%20statements-brightgreen)](#quality-gates)
-[![Lighthouse-friendly](https://img.shields.io/badge/initial%20payload-72%20kB%20gzip-blue)](#performance)
+[![Initial payload](https://img.shields.io/badge/initial%20payload-72%20kB%20gzip-blue)](#performance)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 > One year of a stranger's digital life — music, movies, places, purchases, photos,
