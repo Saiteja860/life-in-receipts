@@ -258,6 +258,40 @@ main { max-width: 1120px; margin: 0 auto; padding: 28px 20px 90px; }
   border-radius: 999px; padding: 2px 9px; color: var(--muted); text-transform: uppercase;
 }
 
+/* ---------------- accessibility ---------------- */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--paper); color: var(--ink);
+  padding: 10px 16px; font-weight: 700; border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
+:focus-visible { outline: 3px solid #6f9fd8; outline-offset: 2px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html { scroll-behavior: auto; }
+  .receipt-card:hover { transform: none; }
+}
+
+/* ---------------- chapter quick-nav ---------------- */
+.chapter-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+.chapter-nav a {
+  --chapter: #c9754b;
+  font-family: var(--mono); font-size: 11.5px; font-weight: 700;
+  color: var(--muted); text-decoration: none;
+  border: 1px solid rgba(246, 239, 221, 0.18);
+  border-left: 3px solid var(--chapter);
+  border-radius: 999px; padding: 6px 12px;
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.chapter-nav a:hover { color: var(--paper); border-color: var(--chapter); }
+
 /* ---------------- responsive ---------------- */
 @media (max-width: 720px) {
   .topnav { flex-direction: column; gap: 8px; }

@@ -74,7 +74,7 @@ export default function Explorer({ receipts, onOpen }) {
             {asc ? '↑ oldest first' : '↓ newest first'}
           </button>
         </div>
-        <div className="ex-count">{results.length} of {receipts.length} receipts</div>
+        <div className="ex-count" aria-live="polite">{results.length} of {receipts.length} receipts</div>
       </div>
 
       <div className="ex-grid">

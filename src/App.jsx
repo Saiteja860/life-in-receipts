@@ -32,18 +32,19 @@ export default function App() {
 
   return (
     <div className="app">
-      <nav className="topnav">
-        <button className="brand" onClick={() => setView('cover')}>🧾 Your Life, In Receipts</button>
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      <nav className="topnav" aria-label="Primary">
+        <button className="brand" onClick={() => setView('cover')} aria-label="Go to archive cover">🧾 Your Life, In Receipts</button>
         <div className="nav-links">
           {navItems.map(([id, label]) => (
-            <button key={id} className={`nav-btn ${view === id ? 'active' : ''}`} onClick={() => setView(id)}>
+            <button key={id} className={`nav-btn ${view === id ? 'active' : ''}`} onClick={() => setView(id)} aria-current={view === id ? 'page' : undefined}>
               {label}
             </button>
           ))}
         </div>
       </nav>
 
-      <main>
+      <main id="main-content">
         {view === 'story' && (
           <StoryView receipts={dataset} linkMap={linkMap} onOpen={open} lensOn={lensOn} setLensOn={setLensOn} />
         )}

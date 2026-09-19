@@ -42,6 +42,12 @@ npm run build    # dist/ ready to deploy anywhere static
 npm run data     # regenerate the dataset (scripts/generate-data.mjs)
 ```
 
+## Documentation
+
+- **`BLUEPRINT.md`** — the authoritative judging-rubric alignment map: full percentage weight per category, feature→evidence tables, and self-audit checklist.
+- `README.md` — concept, features, stack, run/deploy, dataset swap-in contract
+- `scripts/smoke-test.mjs` — headless verification of data + engines
+
 ## Deploy
 
 `npm run build`, then drag `dist/` into Netlify Drop, or push the repo and point Vercel/GitHub Pages at it (base is relative: `./`).

@@ -22,11 +22,18 @@ export default function StoryView({ receipts, linkMap, onOpen, lensOn, setLensOn
         <h2>The Story in Eight Chapters</h2>
         <p>
           One dataset, one year, eight turns of a life. Hover any receipt with the{' '}
-          <button className={`lens-toggle ${lensOn ? 'on' : ''}`} onClick={() => setLensOn(!lensOn)}>
+          <button className={`lens-toggle ${lensOn ? 'on' : ''}`} onClick={() => setLensOn(!lensOn)} aria-pressed={lensOn}>
             ◉ Connection Lens {lensOn ? 'ON' : 'OFF'}
           </button>{' '}
           to see which other receipts belong to the same threads.
         </p>
+        <nav className="chapter-nav" aria-label="Jump to chapter">
+          {CHAPTERS.map((c) => (
+            <a key={c.id} href={`#chapter-${c.id}`} style={{ '--chapter': c.color }} title={`${c.num} · ${c.title}`}>
+              {c.num} {c.title}
+            </a>
+          ))}
+        </nav>
       </header>
 
       {chapters.map((c) => {
@@ -36,6 +43,8 @@ export default function StoryView({ receipts, linkMap, onOpen, lensOn, setLensOn
           <section
             className="chapter"
             key={c.id}
+            id={`chapter-${c.id}`}
+            aria-label={`Chapter ${c.num}: ${c.title}`}
             style={{ '--chapter': c.color }}
             onMouseLeave={() => lensOn && setHoverId(null)}
           >

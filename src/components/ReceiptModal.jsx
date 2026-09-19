@@ -1,9 +1,25 @@
+import { useEffect, useRef } from 'react'
 import { TYPE_META, CHAPTER_MAP } from '../data/chapters.js'
 import ReceiptCard from './ReceiptCard.jsx'
 
 const fmt = new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' })
 
 export default function ReceiptModal({ receipt, links, onClose, onOpen }) {
+  const closeRef = useRef(null)
+
+  // Accessibility: Escape closes, focus moves to dialog, background scroll locks.
+  useEffect(() => {
+    if (!receipt) return undefined
+    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    closeRef.current?.focus()
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [receipt, onClose])
+
   if (!receipt) return null
   const t = TYPE_META[receipt.type]
   const chapter = CHAPTER_MAP[receipt.arc]
@@ -15,8 +31,15 @@ export default function ReceiptModal({ receipt, links, onClose, onOpen }) {
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal-panel" onClick={(e) => e.stopPropagation()} style={{ '--chapter': chapter.color }}>
-        <button className="modal-close" onClick={onClose} aria-label="Close">✕</button>
+      <div
+        className="modal-panel"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Receipt: ${receipt.title}`}
+        style={{ '--chapter': chapter.color }}
+      >
+        <button className="modal-close" onClick={onClose} aria-label="Close receipt details" ref={closeRef}>✕</button>
         <div className="modal-receipt" style={{ '--ink': t.ink }}>
           <div className="rc-head">
             <span className="rc-type">{t.icon} {t.label.toUpperCase()}</span>
