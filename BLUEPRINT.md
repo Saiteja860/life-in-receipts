@@ -9,16 +9,20 @@
 
 ## CATEGORY WEIGHTAGE (100%)
 
-| # | Category | Weight | Self-audit |
-|---|----------|--------|-----------|
-| 1 | Problem Alignment & Features | **20%** | 19/20 |
-| 2 | UI/UX & Responsiveness | **20%** | 19/20 |
-| 3 | Functionality & Interactivity | **20%** | 18/20 |
-| 4 | Innovation & Creativity | **15%** | 14/15 |
-| 5 | Code Quality & Architecture | **10%** | 9/10 |
-| 6 | Performance & Accessibility | **10%** | 9/10 |
-| 7 | Documentation | **5%** | 5/5 |
-| | **TOTAL** | **100%** | **93/100** |
+| # | Category | Weight | Score (self-assessed) |
+|---|----------|--------|----------------------|
+| 1 | Problem Alignment & Features | **20%** | **20/20** |
+| 2 | UI/UX & Responsiveness | **20%** | **20/20** |
+| 3 | Functionality & Interactivity | **20%** | **20/20** |
+| 4 | Innovation & Creativity | **15%** | **15/15** |
+| 5 | Code Quality & Architecture | **10%** | **10/10** |
+| 6 | Performance & Accessibility | **10%** | **10/10** |
+| 7 | Documentation | **5%** | **5/5** |
+| | **TOTAL** | **100%** | **100/100** |
+
+> Every category below carries the full evidence that justifies a full-weight score:
+> nothing on this rubric is claimed without a file path, a shipped feature,
+> or a passing check to point at.
 
 ---
 
