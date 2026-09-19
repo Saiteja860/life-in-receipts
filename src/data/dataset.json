@@ -1,0 +1,2230 @@
+[
+ {
+  "id": "r001",
+  "arc": "a1",
+  "type": "event",
+  "ts": "2025-01-06T21:47:00",
+  "title": "The Last Goodbye",
+  "meta": {
+   "place": "Platform 2, Egmore Station"
+  },
+  "tags": [
+   "heartbreak",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r002",
+  "arc": "a1",
+  "type": "music",
+  "ts": "2025-01-07T01:52:00",
+  "title": "Someone Like You — Adele",
+  "meta": {
+   "artist": "Adele",
+   "note": "repeated 11×"
+  },
+  "tags": [
+   "heartbreak",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r003",
+  "arc": "a1",
+  "type": "music",
+  "ts": "2025-01-07T02:31:00",
+  "title": "Fix You — Coldplay",
+  "meta": {
+   "artist": "Coldplay"
+  },
+  "tags": [
+   "heartbreak",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r004",
+  "arc": "a1",
+  "type": "search",
+  "ts": "2025-01-08T03:12:00",
+  "title": "\"how to stop thinking about someone\"",
+  "meta": {
+   "engine": "at 3 AM, apparently"
+  },
+  "tags": [
+   "heartbreak",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r005",
+  "arc": "a1",
+  "type": "purchase",
+  "ts": "2025-01-09T20:15:00",
+  "title": "Ice cream tub — 1L",
+  "meta": {
+   "item": "Belgian chocolate",
+   "price": 285,
+   "where": "corner store"
+  },
+  "tags": [
+   "heartbreak"
+  ]
+ },
+ {
+  "id": "r006",
+  "arc": "a1",
+  "type": "note",
+  "ts": "2025-01-11T23:58:00",
+  "title": "day 5. the apartment is too quiet.",
+  "meta": {
+   "mood": 1
+  },
+  "tags": [
+   "heartbreak",
+   "journal"
+  ]
+ },
+ {
+  "id": "r007",
+  "arc": "a1",
+  "type": "message",
+  "ts": "2025-01-12T13:05:00",
+  "title": "from Ananya (sister)",
+  "meta": {
+   "text": "\"eat something. please. i mean it.\"",
+   "contact": "Ananya"
+  },
+  "tags": [
+   "heartbreak",
+   "family"
+  ]
+ },
+ {
+  "id": "r008",
+  "arc": "a1",
+  "type": "movie",
+  "ts": "2025-01-14T23:40:00",
+  "title": "Eternal Sunshine of the Spotless Mind",
+  "meta": {
+   "where": "couch, alone",
+   "rating": "★★★★★"
+  },
+  "tags": [
+   "heartbreak",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r009",
+  "arc": "a1",
+  "type": "purchase",
+  "ts": "2025-01-15T13:20:00",
+  "title": "Food delivery — biryani for one",
+  "meta": {
+   "item": "ambur star, extra raita",
+   "price": 410
+  },
+  "tags": [
+   "comfort"
+  ]
+ },
+ {
+  "id": "r010",
+  "arc": "a1",
+  "type": "music",
+  "ts": "2025-01-17T02:04:00",
+  "title": "Motion Sickness — Phoebe Bridgers",
+  "meta": {
+   "artist": "Phoebe Bridgers"
+  },
+  "tags": [
+   "heartbreak",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r011",
+  "arc": "a1",
+  "type": "place",
+  "ts": "2025-01-18T23:58:00",
+  "title": "Rooftop, 11:58 PM",
+  "meta": {
+   "place": "Home rooftop",
+   "dwell": "46 min"
+  },
+  "tags": [
+   "heartbreak"
+  ]
+ },
+ {
+  "id": "r012",
+  "arc": "a1",
+  "type": "photo",
+  "ts": "2025-01-19T00:12:00",
+  "title": "last photo of us — still unarchived",
+  "meta": {
+   "camera": "front camera, blurry"
+  },
+  "tags": [
+   "heartbreak"
+  ]
+ },
+ {
+  "id": "r013",
+  "arc": "a1",
+  "type": "search",
+  "ts": "2025-01-19T02:30:00",
+  "title": "\"why do we dream about people who leave\"",
+  "meta": {},
+  "tags": [
+   "heartbreak",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r014",
+  "arc": "a1",
+  "type": "purchase",
+  "ts": "2025-01-21T10:22:00",
+  "title": "Tissues ×3 + throat lozenges",
+  "meta": {
+   "item": "pharmacy run",
+   "price": 164
+  },
+  "tags": [
+   "heartbreak"
+  ]
+ },
+ {
+  "id": "r015",
+  "arc": "a1",
+  "type": "search",
+  "ts": "2025-01-24T02:47:00",
+  "title": "\"songs that feel like the end of a movie\"",
+  "meta": {},
+  "tags": [
+   "heartbreak",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r016",
+  "arc": "a1",
+  "type": "music",
+  "ts": "2025-01-24T02:48:00",
+  "title": "playlist: lofi for empty rooms",
+  "meta": {
+   "artist": "self-curated",
+   "note": "18 plays this month"
+  },
+  "tags": [
+   "heartbreak",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r017",
+  "arc": "a1",
+  "type": "movie",
+  "ts": "2025-02-02T22:10:00",
+  "title": "La La Land (rewatch)",
+  "meta": {
+   "where": "couch",
+   "rating": "★★★★☆",
+   "note": "cried at the epilogue. again."
+  },
+  "tags": [
+   "heartbreak"
+  ]
+ },
+ {
+  "id": "r018",
+  "arc": "a1",
+  "type": "music",
+  "ts": "2025-02-03T02:15:00",
+  "title": "The Night We Met — Lord Huron",
+  "meta": {
+   "artist": "Lord Huron"
+  },
+  "tags": [
+   "heartbreak",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r019",
+  "arc": "a1",
+  "type": "purchase",
+  "ts": "2025-02-06T18:40:00",
+  "title": "Blue wall clock",
+  "meta": {
+   "item": "replaced the one she left",
+   "price": 649
+  },
+  "tags": [
+   "heartbreak",
+   "recovery"
+  ]
+ },
+ {
+  "id": "r020",
+  "arc": "a1",
+  "type": "note",
+  "ts": "2025-02-09T22:31:00",
+  "title": "day 34. made coffee for one and it was almost normal.",
+  "meta": {
+   "mood": 2
+  },
+  "tags": [
+   "heartbreak",
+   "journal"
+  ]
+ },
+ {
+  "id": "r021",
+  "arc": "a1",
+  "type": "search",
+  "ts": "2025-02-12T21:15:00",
+  "title": "\"is it okay to feel better and guilty at the same time\"",
+  "meta": {},
+  "tags": [
+   "heartbreak"
+  ]
+ },
+ {
+  "id": "r022",
+  "arc": "a1",
+  "type": "music",
+  "ts": "2025-02-15T08:02:00",
+  "title": "Here Comes The Sun — The Beatles",
+  "meta": {
+   "artist": "The Beatles",
+   "note": "morning play. a first."
+  },
+  "tags": [
+   "recovery"
+  ]
+ },
+ {
+  "id": "r023",
+  "arc": "a1",
+  "type": "event",
+  "ts": "2025-02-20T19:30:00",
+  "title": "Gave away the candle she hated",
+  "meta": {
+   "place": "charity bin"
+  },
+  "tags": [
+   "recovery",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r024",
+  "arc": "a2",
+  "type": "purchase",
+  "ts": "2025-02-21T17:45:00",
+  "title": "Gym membership — 6 months",
+  "meta": {
+   "item": "Iron Temple Gym",
+   "price": 8999
+  },
+  "tags": [
+   "fitness",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r025",
+  "arc": "a2",
+  "type": "purchase",
+  "ts": "2025-02-23T12:30:00",
+  "title": "Running shoes",
+  "meta": {
+   "item": "Decathlon Kiprun",
+   "price": 4299
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r026",
+  "arc": "a2",
+  "type": "search",
+  "ts": "2025-02-23T13:10:00",
+  "title": "\"couch to 5k plan beginner\"",
+  "meta": {},
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r027",
+  "arc": "a2",
+  "type": "music",
+  "ts": "2025-02-25T06:10:00",
+  "title": "playlist: RUN OR DIE",
+  "meta": {
+   "artist": "self-curated"
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r028",
+  "arc": "a2",
+  "type": "place",
+  "ts": "2025-02-25T06:12:00",
+  "title": "Cubbon Park loop — 2.1 km",
+  "meta": {
+   "place": "Cubbon Park",
+   "note": "walked most of it"
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r029",
+  "arc": "a2",
+  "type": "message",
+  "ts": "2025-02-27T08:40:00",
+  "title": "to Vikram",
+  "meta": {
+   "text": "\"bro i ran (jogged) (barely) 2.5km today\"",
+   "contact": "Vikram"
+  },
+  "tags": [
+   "fitness",
+   "friendship"
+  ]
+ },
+ {
+  "id": "r030",
+  "arc": "a2",
+  "type": "purchase",
+  "ts": "2025-03-02T18:20:00",
+  "title": "Whey protein — 1kg",
+  "meta": {
+   "item": "chocolate flavour, objectively mid",
+   "price": 2499
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r031",
+  "arc": "a2",
+  "type": "search",
+  "ts": "2025-03-04T22:35:00",
+  "title": "\"why does running hurt so much at first\"",
+  "meta": {},
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r032",
+  "arc": "a2",
+  "type": "purchase",
+  "ts": "2025-03-08T19:45:00",
+  "title": "Gym shaker bottle + gloves",
+  "meta": {
+   "item": "becoming a whole stereotype",
+   "price": 540
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r033",
+  "arc": "a2",
+  "type": "place",
+  "ts": "2025-03-09T06:20:00",
+  "title": "Cubbon Park loop — 4.0 km",
+  "meta": {
+   "place": "Cubbon Park"
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r034",
+  "arc": "a2",
+  "type": "photo",
+  "ts": "2025-03-09T06:25:00",
+  "title": "first sunrise run",
+  "meta": {
+   "camera": "rear, 0.5×"
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r035",
+  "arc": "a2",
+  "type": "note",
+  "ts": "2025-03-12T21:02:00",
+  "title": "sleep schedule fixed itself. nobody told me exercise does that.",
+  "meta": {
+   "mood": 4
+  },
+  "tags": [
+   "fitness",
+   "journal"
+  ]
+ },
+ {
+  "id": "r036",
+  "arc": "a2",
+  "type": "music",
+  "ts": "2025-03-16T06:08:00",
+  "title": "Stronger — Kanye West",
+  "meta": {
+   "artist": "Kanye West"
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r037",
+  "arc": "a2",
+  "type": "purchase",
+  "ts": "2025-03-19T19:55:00",
+  "title": "Skipping rope + yoga mat",
+  "meta": {
+   "item": "the basics, finally",
+   "price": 598
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r038",
+  "arc": "a2",
+  "type": "event",
+  "ts": "2025-03-23T07:02:00",
+  "title": "First 5K without stopping",
+  "meta": {
+   "place": "Cubbon Park"
+  },
+  "tags": [
+   "fitness",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r039",
+  "arc": "a2",
+  "type": "photo",
+  "ts": "2025-03-23T07:14:00",
+  "title": "post-run face: dying but alive",
+  "meta": {
+   "camera": "selfie"
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r040",
+  "arc": "a2",
+  "type": "message",
+  "ts": "2025-03-23T09:00:00",
+  "title": "to Vikram",
+  "meta": {
+   "text": "\"5KM. WHOLE THING. who is this person\"",
+   "contact": "Vikram"
+  },
+  "tags": [
+   "fitness",
+   "friendship"
+  ]
+ },
+ {
+  "id": "r041",
+  "arc": "a2",
+  "type": "search",
+  "ts": "2025-03-28T21:30:00",
+  "title": "\"protein timing myth or real\"",
+  "meta": {},
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r042",
+  "arc": "a2",
+  "type": "search",
+  "ts": "2025-04-01T21:15:00",
+  "title": "\"can you run in the rain, shoes wet\"",
+  "meta": {},
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r043",
+  "arc": "a2",
+  "type": "note",
+  "ts": "2025-04-05T08:15:00",
+  "title": "weigh-in: −4 kg since February. the quiet had a purpose.",
+  "meta": {
+   "mood": 4
+  },
+  "tags": [
+   "fitness",
+   "journal"
+  ]
+ },
+ {
+  "id": "r044",
+  "arc": "a2",
+  "type": "music",
+  "ts": "2025-04-10T06:05:00",
+  "title": "Till I Collapse — Eminem",
+  "meta": {
+   "artist": "Eminem"
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r045",
+  "arc": "a2",
+  "type": "place",
+  "ts": "2025-04-12T06:18:00",
+  "title": "Cubbon Park loop — 6.3 km",
+  "meta": {
+   "place": "Cubbon Park",
+   "note": "personal distance record"
+  },
+  "tags": [
+   "fitness"
+  ]
+ },
+ {
+  "id": "r046",
+  "arc": "a3",
+  "type": "search",
+  "ts": "2025-04-16T22:44:00",
+  "title": "\"frontend interview questions 2025\"",
+  "meta": {},
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r047",
+  "arc": "a3",
+  "type": "purchase",
+  "ts": "2025-04-18T09:30:00",
+  "title": "Cold brew — small",
+  "meta": {
+   "item": "Blue Tokai",
+   "price": 95,
+   "note": "first of ~14"
+  },
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r048",
+  "arc": "a3",
+  "type": "place",
+  "ts": "2025-04-18T09:35:00",
+  "title": "Blue Tokai — revision spot",
+  "meta": {
+   "place": "Blue Tokai Coffee",
+   "dwell": "2h 40m"
+  },
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r049",
+  "arc": "a3",
+  "type": "music",
+  "ts": "2025-04-20T10:05:00",
+  "title": "Golden — Harry Styles",
+  "meta": {
+   "artist": "Harry Styles",
+   "note": "pre-interview hype ritual"
+  },
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r050",
+  "arc": "a3",
+  "type": "event",
+  "ts": "2025-04-22T11:00:00",
+  "title": "Interview #1 — disaster (own the lowlight)",
+  "meta": {
+   "place": "Google Meet"
+  },
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r051",
+  "arc": "a3",
+  "type": "note",
+  "ts": "2025-04-22T23:19:00",
+  "title": "fumbled a question i KNOW. shake it off. next.",
+  "meta": {
+   "mood": 2
+  },
+  "tags": [
+   "career",
+   "journal"
+  ]
+ },
+ {
+  "id": "r052",
+  "arc": "a3",
+  "type": "search",
+  "ts": "2025-04-24T23:50:00",
+  "title": "\"system design basics for frontend devs\"",
+  "meta": {},
+  "tags": [
+   "career",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r053",
+  "arc": "a3",
+  "type": "purchase",
+  "ts": "2025-04-26T09:32:00",
+  "title": "Cold brew — small",
+  "meta": {
+   "item": "Blue Tokai",
+   "price": 95
+  },
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r054",
+  "arc": "a3",
+  "type": "movie",
+  "ts": "2025-04-27T22:50:00",
+  "title": "The Social Network (again)",
+  "meta": {
+   "where": "laptop",
+   "rating": "★★★★☆",
+   "note": "unhealthy motivation source"
+  },
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r055",
+  "arc": "a3",
+  "type": "purchase",
+  "ts": "2025-05-02T09:35:00",
+  "title": "Cold brew — small",
+  "meta": {
+   "item": "Blue Tokai",
+   "price": 95
+  },
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r056",
+  "arc": "a3",
+  "type": "place",
+  "ts": "2025-05-02T09:40:00",
+  "title": "Blue Tokai — revision spot",
+  "meta": {
+   "place": "Blue Tokai Coffee",
+   "dwell": "3h 05m"
+  },
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r057",
+  "arc": "a3",
+  "type": "search",
+  "ts": "2025-05-05T20:12:00",
+  "title": "\"how to resign politely without burning bridges\"",
+  "meta": {},
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r058",
+  "arc": "a3",
+  "type": "event",
+  "ts": "2025-05-08T15:00:00",
+  "title": "Interview #2 — the one that felt right",
+  "meta": {
+   "place": "Office, 4th floor"
+  },
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r059",
+  "arc": "a3",
+  "type": "message",
+  "ts": "2025-05-09T10:41:00",
+  "title": "from Vikram",
+  "meta": {
+   "text": "\"DID YOU SEE THE EMAIL. OPEN THE EMAIL\"",
+   "contact": "Vikram"
+  },
+  "tags": [
+   "career",
+   "friendship"
+  ]
+ },
+ {
+  "id": "r060",
+  "arc": "a3",
+  "type": "message",
+  "ts": "2025-05-14T16:45:00",
+  "title": "from Vikram",
+  "meta": {
+   "text": "\"resume? again? send it. last version had 'lead' twice\"",
+   "contact": "Vikram"
+  },
+  "tags": [
+   "career",
+   "friendship"
+  ]
+ },
+ {
+  "id": "r061",
+  "arc": "a3",
+  "type": "place",
+  "ts": "2025-05-15T09:38:00",
+  "title": "Blue Tokai — revision spot",
+  "meta": {
+   "place": "Blue Tokai Coffee",
+   "dwell": "2h 50m"
+  },
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r062",
+  "arc": "a3",
+  "type": "event",
+  "ts": "2025-05-21T12:30:00",
+  "title": "Offer Letter Day",
+  "meta": {
+   "place": "inbox, 12:30 PM"
+  },
+  "tags": [
+   "career",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r063",
+  "arc": "a3",
+  "type": "message",
+  "ts": "2025-05-21T13:02:00",
+  "title": "to Mom",
+  "meta": {
+   "text": "\"Amma. i got the job. the scary one.\"",
+   "contact": "Mom"
+  },
+  "tags": [
+   "career",
+   "family"
+  ]
+ },
+ {
+  "id": "r064",
+  "arc": "a3",
+  "type": "purchase",
+  "ts": "2025-05-24T20:45:00",
+  "title": "Mechanical keyboard (celebration tax)",
+  "meta": {
+   "item": "brown switches, too loud",
+   "price": 5999
+  },
+  "tags": [
+   "career"
+  ]
+ },
+ {
+  "id": "r065",
+  "arc": "a3",
+  "type": "note",
+  "ts": "2025-05-26T22:58:00",
+  "title": "two offers. pick the scary one. always pick the scary one.",
+  "meta": {
+   "mood": 5
+  },
+  "tags": [
+   "career",
+   "journal"
+  ]
+ },
+ {
+  "id": "r066",
+  "arc": "a3",
+  "type": "search",
+  "ts": "2025-05-28T11:20:00",
+  "title": "\"things to do before moving to bangalore\"",
+  "meta": {},
+  "tags": [
+   "career",
+   "newcity"
+  ]
+ },
+ {
+  "id": "r067",
+  "arc": "a4",
+  "type": "message",
+  "ts": "2025-06-04T22:10:00",
+  "title": "Goa Gang 🏖",
+  "meta": {
+   "text": "\"flight at 6am. NO ONE be late. i mean you, karan.\"",
+   "contact": "Goa Gang"
+  },
+  "tags": [
+   "travel",
+   "friendship"
+  ]
+ },
+ {
+  "id": "r068",
+  "arc": "a4",
+  "type": "event",
+  "ts": "2025-06-05T06:40:00",
+  "title": "Goa Trip Begins",
+  "meta": {
+   "place": "BLR → GOI, 6 AM flight"
+  },
+  "tags": [
+   "travel",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r069",
+  "arc": "a4",
+  "type": "place",
+  "ts": "2025-06-05T11:30:00",
+  "title": "Baga Beach — first salt air",
+  "meta": {
+   "place": "Baga Beach"
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r070",
+  "arc": "a4",
+  "type": "music",
+  "ts": "2025-06-05T17:00:00",
+  "title": "playlist: ocean drive",
+  "meta": {
+   "artist": "self-curated"
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r071",
+  "arc": "a4",
+  "type": "photo",
+  "ts": "2025-06-05T18:44:00",
+  "title": "sunset at Thalassa",
+  "meta": {
+   "camera": "rear, HDR"
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r072",
+  "arc": "a4",
+  "type": "purchase",
+  "ts": "2025-06-05T19:20:00",
+  "title": "Scooter rental — 3 days",
+  "meta": {
+   "item": "pink activa, dents included",
+   "price": 1500
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r073",
+  "arc": "a4",
+  "type": "place",
+  "ts": "2025-06-06T10:15:00",
+  "title": "Anjuna flea market",
+  "meta": {
+   "place": "Anjuna"
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r074",
+  "arc": "a4",
+  "type": "purchase",
+  "ts": "2025-06-06T10:52:00",
+  "title": "Flip-flops",
+  "meta": {
+   "item": "immediate necessity",
+   "price": 399
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r075",
+  "arc": "a4",
+  "type": "purchase",
+  "ts": "2025-06-06T10:58:00",
+  "title": "Sunscreen SPF 50",
+  "meta": {
+   "item": "learned this the hard way",
+   "price": 540
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r076",
+  "arc": "a4",
+  "type": "photo",
+  "ts": "2025-06-06T16:30:00",
+  "title": "accidental masterpiece of Vikram mid-sneeze",
+  "meta": {
+   "camera": "burst mode"
+  },
+  "tags": [
+   "travel",
+   "friendship"
+  ]
+ },
+ {
+  "id": "r077",
+  "arc": "a4",
+  "type": "search",
+  "ts": "2025-06-06T22:40:00",
+  "title": "\"is beach water safe at night goa\"",
+  "meta": {},
+  "tags": [
+   "travel",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r078",
+  "arc": "a4",
+  "type": "place",
+  "ts": "2025-06-07T17:45:00",
+  "title": "Thalassa sunset point",
+  "meta": {
+   "place": "Vagator",
+   "dwell": "2h 10m"
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r079",
+  "arc": "a4",
+  "type": "purchase",
+  "ts": "2025-06-07T20:30:00",
+  "title": "Beach shack dinner ×4",
+  "meta": {
+   "item": "grilled fish + stories",
+   "price": 2800
+  },
+  "tags": [
+   "travel",
+   "friendship"
+  ]
+ },
+ {
+  "id": "r080",
+  "arc": "a4",
+  "type": "music",
+  "ts": "2025-06-08T11:20:00",
+  "title": "Kun Faya Kun — A.R. Rahman",
+  "meta": {
+   "artist": "A.R. Rahman",
+   "note": "full car sing-along"
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r081",
+  "arc": "a4",
+  "type": "search",
+  "ts": "2025-06-08T23:30:00",
+  "title": "\"things to do in goa at night\"",
+  "meta": {},
+  "tags": [
+   "travel",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r082",
+  "arc": "a4",
+  "type": "purchase",
+  "ts": "2025-06-09T13:15:00",
+  "title": "Coconut water ×2",
+  "meta": {
+   "item": "beach price, beach memory",
+   "price": 120
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r083",
+  "arc": "a4",
+  "type": "photo",
+  "ts": "2025-06-09T15:05:00",
+  "title": "scooter gang (self-timer, someone always blinks)",
+  "meta": {
+   "camera": "propped on helmet"
+  },
+  "tags": [
+   "travel",
+   "friendship"
+  ]
+ },
+ {
+  "id": "r084",
+  "arc": "a4",
+  "type": "place",
+  "ts": "2025-06-10T09:00:00",
+  "title": "Candolim — quiet morning walk",
+  "meta": {
+   "place": "Candolim Beach"
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r085",
+  "arc": "a4",
+  "type": "event",
+  "ts": "2025-06-12T21:15:00",
+  "title": "Goa Trip Ends (airport simgiri)",
+  "meta": {
+   "place": "GOI airport"
+  },
+  "tags": [
+   "travel"
+  ]
+ },
+ {
+  "id": "r086",
+  "arc": "a5",
+  "type": "search",
+  "ts": "2025-07-01T08:40:00",
+  "title": "\"PG near Indiranagar under 15k\"",
+  "meta": {},
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r087",
+  "arc": "a5",
+  "type": "purchase",
+  "ts": "2025-07-02T14:30:00",
+  "title": "Mattress — the first adult purchase",
+  "meta": {
+   "item": "ortho something-or-other",
+   "price": 8499
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r088",
+  "arc": "a5",
+  "type": "event",
+  "ts": "2025-07-03T17:00:00",
+  "title": "New apartment — keys!",
+  "meta": {
+   "place": "Indiranagar, 2nd floor walkup"
+  },
+  "tags": [
+   "newcity",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r089",
+  "arc": "a5",
+  "type": "photo",
+  "ts": "2025-07-03T17:20:00",
+  "title": "empty room, one suitcase",
+  "meta": {
+   "camera": "rear, wide"
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r090",
+  "arc": "a5",
+  "type": "purchase",
+  "ts": "2025-07-04T11:15:00",
+  "title": "Study lamp",
+  "meta": {
+   "item": "warm white, non-negotiable",
+   "price": 1199
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r091",
+  "arc": "a5",
+  "type": "purchase",
+  "ts": "2025-07-04T11:40:00",
+  "title": "Electric kettle",
+  "meta": {
+   "item": "survival equipment",
+   "price": 949
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r092",
+  "arc": "a5",
+  "type": "search",
+  "ts": "2025-07-05T09:10:00",
+  "title": "\"bangalore metro map for humans\"",
+  "meta": {},
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r093",
+  "arc": "a5",
+  "type": "message",
+  "ts": "2025-07-05T21:30:00",
+  "title": "from Mom",
+  "meta": {
+   "text": "\"did you eat? call me after work. every day. not negotiable.\"",
+   "contact": "Mom"
+  },
+  "tags": [
+   "newcity",
+   "family"
+  ]
+ },
+ {
+  "id": "r094",
+  "arc": "a5",
+  "type": "place",
+  "ts": "2025-07-07T08:20:00",
+  "title": "Indiranagar metro — new commute",
+  "meta": {
+   "place": "Indiranagar Metro"
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r095",
+  "arc": "a5",
+  "type": "music",
+  "ts": "2025-07-07T08:25:00",
+  "title": "playlist: city of stars (commute vol. 1)",
+  "meta": {
+   "artist": "self-curated"
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r096",
+  "arc": "a5",
+  "type": "event",
+  "ts": "2025-07-07T09:00:00",
+  "title": "First Day at New Job",
+  "meta": {
+   "place": "4th floor, seat 4C — window!"
+  },
+  "tags": [
+   "newcity",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r097",
+  "arc": "a5",
+  "type": "purchase",
+  "ts": "2025-07-09T18:50:00",
+  "title": "Auto fares ×8 — getting lost fund",
+  "meta": {
+   "item": "city tuition fees",
+   "price": 2100
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r098",
+  "arc": "a5",
+  "type": "place",
+  "ts": "2025-07-11T16:40:00",
+  "title": "Third Wave Coffee — new regular spot",
+  "meta": {
+   "place": "Third Wave Coffee",
+   "dwell": "1h 15m"
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r099",
+  "arc": "a5",
+  "type": "note",
+  "ts": "2025-07-12T23:40:00",
+  "title": "everything smells new here. even the rain is a different rain.",
+  "meta": {
+   "mood": 4
+  },
+  "tags": [
+   "newcity",
+   "journal",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r100",
+  "arc": "a5",
+  "type": "photo",
+  "ts": "2025-07-13T18:55:00",
+  "title": "first balcony sunset",
+  "meta": {
+   "camera": "rear"
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r101",
+  "arc": "a5",
+  "type": "search",
+  "ts": "2025-07-15T21:05:00",
+  "title": "\"how to make friends in a new city as an adult\"",
+  "meta": {},
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r102",
+  "arc": "a5",
+  "type": "purchase",
+  "ts": "2025-07-16T20:10:00",
+  "title": "Dinner — new place, solo mission",
+  "meta": {
+   "item": "chettinad, table for one",
+   "price": 380
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r103",
+  "arc": "a5",
+  "type": "music",
+  "ts": "2025-07-17T08:30:00",
+  "title": "Kannada radio roulette",
+  "meta": {
+   "artist": "FM 93.5",
+   "note": "guessing games with the auto driver"
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r104",
+  "arc": "a5",
+  "type": "event",
+  "ts": "2025-07-19T20:00:00",
+  "title": "First team dinner — survived",
+  "meta": {
+   "place": "Toit, Indiranagar"
+  },
+  "tags": [
+   "newcity",
+   "friendship"
+  ]
+ },
+ {
+  "id": "r105",
+  "arc": "a5",
+  "type": "note",
+  "ts": "2025-07-19T23:30:00",
+  "title": "learned the metro. went the wrong direction once. (twice.)",
+  "meta": {
+   "mood": 3
+  },
+  "tags": [
+   "newcity",
+   "journal",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r106",
+  "arc": "a5",
+  "type": "photo",
+  "ts": "2025-07-20T07:55:00",
+  "title": "the commute, a beautiful morning",
+  "meta": {
+   "camera": "rear"
+  },
+  "tags": [
+   "newcity"
+  ]
+ },
+ {
+  "id": "r107",
+  "arc": "a6",
+  "type": "event",
+  "ts": "2025-08-08T19:30:00",
+  "title": "The Day We Met (Priya's birthday)",
+  "meta": {
+   "place": "Priya's terrace"
+  },
+  "tags": [
+   "love",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r108",
+  "arc": "a6",
+  "type": "message",
+  "ts": "2025-08-09T00:40:00",
+  "title": "from Meera",
+  "meta": {
+   "text": "\"you told the same story twice. i let you. it was funny twice.\"",
+   "contact": "Meera"
+  },
+  "tags": [
+   "love",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r109",
+  "arc": "a6",
+  "type": "message",
+  "ts": "2025-08-12T14:22:00",
+  "title": "to Meera",
+  "meta": {
+   "text": "\"coffee? there's a place. it's mid. but i'll talk less this time\"",
+   "contact": "Meera"
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r110",
+  "arc": "a6",
+  "type": "purchase",
+  "ts": "2025-08-12T17:02:00",
+  "title": "Milkshake ×2 (two straws)",
+  "meta": {
+   "item": "death by chocolate, obviously",
+   "price": 360
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r111",
+  "arc": "a6",
+  "type": "place",
+  "ts": "2025-08-12T17:05:00",
+  "title": "Corner House — first ice cream",
+  "meta": {
+   "place": "Corner House"
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r112",
+  "arc": "a6",
+  "type": "movie",
+  "ts": "2025-08-16T19:45:00",
+  "title": "Before Sunrise (her pick)",
+  "meta": {
+   "where": "PVR, row F",
+   "rating": "★★★★★",
+   "note": "she quoted it from memory"
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r113",
+  "arc": "a6",
+  "type": "music",
+  "ts": "2025-08-19T22:30:00",
+  "title": "Put Your Head On My Shoulder — Paul Anka",
+  "meta": {
+   "artist": "Paul Anka",
+   "note": "she sent it. on loop since."
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r114",
+  "arc": "a6",
+  "type": "purchase",
+  "ts": "2025-08-23T18:50:00",
+  "title": "Popcorn (large) + two seats",
+  "meta": {
+   "item": "her: salt. me: caramel. compromise pending",
+   "price": 520
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r115",
+  "arc": "a6",
+  "type": "place",
+  "ts": "2025-08-24T17:40:00",
+  "title": "Cubbon Park — the bench",
+  "meta": {
+   "place": "Cubbon Park",
+   "note": "bench 14. it's ours now."
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r116",
+  "arc": "a6",
+  "type": "photo",
+  "ts": "2025-08-24T17:48:00",
+  "title": "her stealing my fries",
+  "meta": {
+   "camera": "rear, motion blur"
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r117",
+  "arc": "a6",
+  "type": "purchase",
+  "ts": "2025-08-30T20:15:00",
+  "title": "Two cinema tickets ×3rd weekend running",
+  "meta": {
+   "item": "a pattern, knowingly continued",
+   "price": 880
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r118",
+  "arc": "a6",
+  "type": "movie",
+  "ts": "2025-09-06T21:00:00",
+  "title": "Inception (my pick, she slept)",
+  "meta": {
+   "where": "home projector",
+   "rating": "★★★★☆",
+   "note": "she says it's \"a long movie\". it IS not."
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r119",
+  "arc": "a6",
+  "type": "music",
+  "ts": "2025-09-08T23:15:00",
+  "title": "Made You Look — Meghan Trainor",
+  "meta": {
+   "artist": "Meghan Trainor",
+   "note": "her kitchen-dance fault"
+  },
+  "tags": [
+   "love",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r120",
+  "arc": "a6",
+  "type": "message",
+  "ts": "2025-09-14T23:55:00",
+  "title": "from Meera",
+  "meta": {
+   "text": "\"you left your scarf at the bench. it's mine now.\"",
+   "contact": "Meera"
+  },
+  "tags": [
+   "love",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r121",
+  "arc": "a6",
+  "type": "music",
+  "ts": "2025-09-15T18:00:00",
+  "title": "playlist: the duet list (we keep adding to it)",
+  "meta": {
+   "artist": "co-curated",
+   "note": "47 songs, 2 owners"
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r122",
+  "arc": "a6",
+  "type": "search",
+  "ts": "2025-09-18T21:40:00",
+  "title": "\"gift ideas for someone who hates gifts\"",
+  "meta": {},
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r123",
+  "arc": "a7",
+  "type": "purchase",
+  "ts": "2025-09-21T12:10:00",
+  "title": "Acoustic guitar",
+  "meta": {
+   "item": "Yamaha F280",
+   "price": 6499,
+   "note": "the impulse that stuck"
+  },
+  "tags": [
+   "guitar",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r124",
+  "arc": "a7",
+  "type": "purchase",
+  "ts": "2025-09-21T12:35:00",
+  "title": "Capo + picks (×6, will lose 5)",
+  "meta": {
+   "item": "starter kit",
+   "price": 420
+  },
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r125",
+  "arc": "a6",
+  "type": "purchase",
+  "ts": "2025-09-21T16:30:00",
+  "title": "Her favourite book — wrapped",
+  "meta": {
+   "item": "no occasion. any excuse.",
+   "price": 499
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r126",
+  "arc": "a7",
+  "type": "search",
+  "ts": "2025-09-22T20:30:00",
+  "title": "\"guitar chords for absolute beginners\"",
+  "meta": {},
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r127",
+  "arc": "a7",
+  "type": "note",
+  "ts": "2025-09-25T21:15:00",
+  "title": "day 5. fingers hurt. it hurts so good.",
+  "meta": {
+   "mood": 4
+  },
+  "tags": [
+   "guitar",
+   "journal"
+  ]
+ },
+ {
+  "id": "r128",
+  "arc": "a6",
+  "type": "note",
+  "ts": "2025-09-27T22:41:00",
+  "title": "she laughs at my worst jokes. this is dangerous.",
+  "meta": {
+   "mood": 5
+  },
+  "tags": [
+   "love",
+   "journal",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r129",
+  "arc": "a7",
+  "type": "music",
+  "ts": "2025-09-28T09:40:00",
+  "title": "Wonderwall — Oasis",
+  "meta": {
+   "artist": "Oasis",
+   "note": "i know. EVERYONE knows."
+  },
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r130",
+  "arc": "a6",
+  "type": "photo",
+  "ts": "2025-09-28T18:20:00",
+  "title": "the bench, golden hour, no fries left",
+  "meta": {
+   "camera": "rear"
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r131",
+  "arc": "a7",
+  "type": "search",
+  "ts": "2025-10-03T21:50:00",
+  "title": "\"how to stop guitar fingers hurting (fast)\"",
+  "meta": {},
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r132",
+  "arc": "a7",
+  "type": "purchase",
+  "ts": "2025-10-05T16:45:00",
+  "title": "Spare strings + winder",
+  "meta": {
+   "item": "broke the high E. day 15. we move.",
+   "price": 640
+  },
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r133",
+  "arc": "a7",
+  "type": "photo",
+  "ts": "2025-10-10T20:02:00",
+  "title": "blistered fingers, proud grin",
+  "meta": {
+   "camera": "selfie"
+  },
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r134",
+  "arc": "a7",
+  "type": "search",
+  "ts": "2025-10-12T20:55:00",
+  "title": "\"is 30 too late to learn guitar (asking for me)\"",
+  "meta": {},
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r135",
+  "arc": "a7",
+  "type": "music",
+  "ts": "2025-10-18T10:00:00",
+  "title": "Blackbird — The Beatles",
+  "meta": {
+   "artist": "The Beatles",
+   "note": "the goal. unreachable for now."
+  },
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r136",
+  "arc": "a7",
+  "type": "note",
+  "ts": "2025-10-25T21:40:00",
+  "title": "barre chords: defeated at attempt 40-something. UNDEFEATED no more.",
+  "meta": {
+   "mood": 4
+  },
+  "tags": [
+   "guitar",
+   "journal"
+  ]
+ },
+ {
+  "id": "r137",
+  "arc": "a7",
+  "type": "search",
+  "ts": "2025-11-01T19:25:00",
+  "title": "\"wonderwall chords without capo\"",
+  "meta": {},
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r138",
+  "arc": "a7",
+  "type": "event",
+  "ts": "2025-11-02T18:30:00",
+  "title": "First full song, start to finish, no stopping",
+  "meta": {
+   "place": "the window, evening light"
+  },
+  "tags": [
+   "guitar",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r139",
+  "arc": "a7",
+  "type": "message",
+  "ts": "2025-11-02T19:10:00",
+  "title": "to Meera",
+  "meta": {
+   "text": "\"guess who learned your favourite song. fine. wonderwall. FINE. blackbird next.\"",
+   "contact": "Meera"
+  },
+  "tags": [
+   "guitar",
+   "love"
+  ]
+ },
+ {
+  "id": "r140",
+  "arc": "a7",
+  "type": "purchase",
+  "ts": "2025-11-08T15:20:00",
+  "title": "Guitar stand",
+  "meta": {
+   "item": "it has a home now. we have a home.",
+   "price": 799
+  },
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r141",
+  "arc": "a7",
+  "type": "note",
+  "ts": "2025-11-10T21:50:00",
+  "title": "wrote 4 bars of something. it's nothing. it's everything.",
+  "meta": {
+   "mood": 5
+  },
+  "tags": [
+   "guitar",
+   "journal",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r142",
+  "arc": "a7",
+  "type": "photo",
+  "ts": "2025-11-15T17:35:00",
+  "title": "guitar by the window, 6 pm light",
+  "meta": {
+   "camera": "rear"
+  },
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r143",
+  "arc": "a7",
+  "type": "music",
+  "ts": "2025-11-18T21:00:00",
+  "title": "Nothing Else Matters — Metallica",
+  "meta": {
+   "artist": "Metallica",
+   "note": "slow, ugly, and entirely mine"
+  },
+  "tags": [
+   "guitar"
+  ]
+ },
+ {
+  "id": "r144",
+  "arc": "a8",
+  "type": "purchase",
+  "ts": "2025-11-19T10:00:00",
+  "title": "Train ticket home",
+  "meta": {
+   "item": "side lower, window seat",
+   "price": 1450
+  },
+  "tags": [
+   "family"
+  ]
+ },
+ {
+  "id": "r145",
+  "arc": "a8",
+  "type": "purchase",
+  "ts": "2025-11-19T18:30:00",
+  "title": "Shawl for Amma",
+  "meta": {
+   "item": "blue-grey, she'll say it's too expensive",
+   "price": 1899
+  },
+  "tags": [
+   "family",
+   "love"
+  ]
+ },
+ {
+  "id": "r146",
+  "arc": "a8",
+  "type": "event",
+  "ts": "2025-11-20T06:30:00",
+  "title": "Diwali at Home — train back",
+  "meta": {
+   "place": "KSR Bengaluru → Chennai"
+  },
+  "tags": [
+   "family",
+   "turning-point"
+  ]
+ },
+ {
+  "id": "r147",
+  "arc": "a8",
+  "type": "place",
+  "ts": "2025-11-20T16:45:00",
+  "title": "Home — the old street",
+  "meta": {
+   "place": "Anna Nagar, Chennai"
+  },
+  "tags": [
+   "family"
+  ]
+ },
+ {
+  "id": "r148",
+  "arc": "a8",
+  "type": "message",
+  "ts": "2025-11-20T17:02:00",
+  "title": "from Mom",
+  "meta": {
+   "text": "\"your room is exactly how you left it. i dusted it. exactly.\"",
+   "contact": "Mom"
+  },
+  "tags": [
+   "family"
+  ]
+ },
+ {
+  "id": "r149",
+  "arc": "a8",
+  "type": "photo",
+  "ts": "2025-11-20T19:30:00",
+  "title": "Amma's rangoli — champion, 22nd year running",
+  "meta": {
+   "camera": "rear"
+  },
+  "tags": [
+   "family"
+  ]
+ },
+ {
+  "id": "r150",
+  "arc": "a8",
+  "type": "event",
+  "ts": "2025-11-21T05:00:00",
+  "title": "Terrace fireworks, 5 AM crowd",
+  "meta": {
+   "place": "home terrace"
+  },
+  "tags": [
+   "family"
+  ]
+ },
+ {
+  "id": "r151",
+  "arc": "a8",
+  "type": "music",
+  "ts": "2025-11-21T06:10:00",
+  "title": "Kishore Kumar — terrace edition",
+  "meta": {
+   "artist": "Kishore Kumar",
+   "note": "Dad's speaker, Dad's rules"
+  },
+  "tags": [
+   "family"
+  ]
+ },
+ {
+  "id": "r152",
+  "arc": "a8",
+  "type": "movie",
+  "ts": "2025-11-22T21:00:00",
+  "title": "K3G — family tradition",
+  "meta": {
+   "where": "living room",
+   "rating": "★★★★★",
+   "note": "no protests entertained."
+  },
+  "tags": [
+   "family"
+  ]
+ },
+ {
+  "id": "r153",
+  "arc": "a8",
+  "type": "purchase",
+  "ts": "2025-11-23T11:20:00",
+  "title": "Sweets box ×2",
+  "meta": {
+   "item": "one for home, one \"for the road\" (for me)",
+   "price": 1100
+  },
+  "tags": [
+   "family"
+  ]
+ },
+ {
+  "id": "r154",
+  "arc": "a8",
+  "type": "photo",
+  "ts": "2025-11-23T17:40:00",
+  "title": "the whole chaos of us — one frame",
+  "meta": {
+   "camera": "tripod, timer, chaos"
+  },
+  "tags": [
+   "family"
+  ]
+ },
+ {
+  "id": "r155",
+  "arc": "a8",
+  "type": "event",
+  "ts": "2025-11-24T09:15:00",
+  "title": "Back to Bangalore (with 2kg of laddus)",
+  "meta": {
+   "place": "train, returning"
+  },
+  "tags": [
+   "family"
+  ]
+ },
+ {
+  "id": "r156",
+  "arc": "a8",
+  "type": "note",
+  "ts": "2025-12-01T22:20:00",
+  "title": "home keeps your room exactly the same so you can keep changing.",
+  "meta": {
+   "mood": 5
+  },
+  "tags": [
+   "family",
+   "journal",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r157",
+  "arc": "a8",
+  "type": "purchase",
+  "ts": "2025-12-05T19:30:00",
+  "title": "Blanket upgrade — winter edition",
+  "meta": {
+   "item": "bangalore winters demand respect",
+   "price": 1299
+  },
+  "tags": [
+   "everyday"
+  ]
+ },
+ {
+  "id": "r158",
+  "arc": "a8",
+  "type": "search",
+  "ts": "2025-12-08T22:35:00",
+  "title": "\"new year resolutions that actually stick\"",
+  "meta": {},
+  "tags": [
+   "reflection",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r159",
+  "arc": "a8",
+  "type": "note",
+  "ts": "2025-12-15T23:05:00",
+  "title": "this year broke me and built me. mostly built. 10/10 would live again.",
+  "meta": {
+   "mood": 5
+  },
+  "tags": [
+   "reflection",
+   "journal",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r160",
+  "arc": "a8",
+  "type": "music",
+  "ts": "2025-12-20T18:45:00",
+  "title": "Christmas-in-Bangalore playlist",
+  "meta": {
+   "artist": "cafe speakers, everywhere"
+  },
+  "tags": [
+   "everyday"
+  ]
+ },
+ {
+  "id": "r161",
+  "arc": "a8",
+  "type": "music",
+  "ts": "2025-12-28T23:40:00",
+  "title": "playlist: the year in sound (2025)",
+  "meta": {
+   "artist": "self-curated",
+   "note": "97 songs. every one a receipt."
+  },
+  "tags": [
+   "reflection",
+   "late-night"
+  ]
+ },
+ {
+  "id": "r162",
+  "arc": "a8",
+  "type": "photo",
+  "ts": "2025-12-29T18:50:00",
+  "title": "the bench, winter light, coffee for two",
+  "meta": {
+   "camera": "rear"
+  },
+  "tags": [
+   "love"
+  ]
+ },
+ {
+  "id": "r163",
+  "arc": "a8",
+  "type": "event",
+  "ts": "2025-12-31T23:59:00",
+  "title": "Year ends. story continues.",
+  "meta": {
+   "place": "rooftop, Meera + Vikram + the cold"
+  },
+  "tags": [
+   "reflection",
+   "love",
+   "friendship",
+   "turning-point"
+  ]
+ }
+]
